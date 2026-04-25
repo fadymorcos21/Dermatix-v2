@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bone: #f6f1e7;
+  --cream: #ece3d2;
+  --ink: #17150f;
+  --gold: #b5986a;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+/* Custom underline for editorial links */
+.editorial-link {
+  position: relative;
+  display: inline-block;
+}
+.editorial-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.editorial-link:hover::after {
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Grain overlay */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  30% { transform: translate(3%, -15%); }
+  50% { transform: translate(12%, 9%); }
+  70% { transform: translate(9%, 4%); }
+  90% { transform: translate(-1%, 7%); }
+}
+
+/* Marquee double-track so it loops seamlessly */
+.marquee-track {
+  display: inline-flex;
+  min-width: 200%;
+  animation: marquee 48s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Fine serif headline helper */
+.display {
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.94;
+}
+
+.display-italic {
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+/* Caption eyebrow */
+.eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* Ticker dot */
+.dot::before {
+  content: "•";
+  margin: 0 1.2em;
+  opacity: 0.5;
+}
+
+/* Soft vignette on hero images */
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(23,21,15,0) 45%, rgba(23,21,15,0.55) 100%),
+    radial-gradient(120% 80% at 50% 40%, rgba(23,21,15,0) 55%, rgba(23,21,15,0.35) 100%);
+  pointer-events: none;
+}
+
+/* Number counter style */
+.num {
+  font-family: var(--font-display), Georgia, serif;
+  font-variant-numeric: lining-nums;
+}
+
+/* Utility: 1px border in bone tones */
+.hair-line {
+  border-color: rgba(23, 21, 15, 0.14);
+}
+
+/* Curtain hover reveal for service cards */
+.curtain {
+  position: relative;
+  overflow: hidden;
+}
+.curtain .curtain-img {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.curtain:hover .curtain-img {
+  transform: scale(1.06);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* Hover arrow slide */
+.arrow-slide {
+  display: inline-block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .arrow-slide,
+.curtain:hover .arrow-slide {
+  transform: translateX(8px);
+}
+
+/* Breathing dot for live indicator */
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #2f3a2e;
+  box-shadow: 0 0 0 0 rgba(47, 58, 46, 0.5);
+  animation: pulse 2.2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(47, 58, 46, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(47, 58, 46, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(47, 58, 46, 0); }
+}
+
+/* Mask gradient for the hero image stack */
+.mask-b {
+  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+}
+
+/* Hide scrollbar where applicable */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
