@@ -8,7 +8,7 @@ const featured = [
     caption:
       "Hyaluronic filler in the under-dosed, hydration-first tradition. Restores border clarity and softens philtrum asymmetry without volume tells.",
     img: "/images/botox-lip.jpg",
-    meta: ["45 min", "from $650", "12–16 mo result"],
+    meta: ["45 min", "Hyaluronic acid", "12–16 mo result"],
   },
   {
     no: "S/02",
@@ -16,7 +16,7 @@ const featured = [
     caption:
       "Microdosed neuromodulator, placed against our proportional grid. Lifts the lateral brow by 1–2 millimetres — cinematic, never surgical.",
     img: "/images/editorial-portrait.jpg",
-    meta: ["20 min", "from $275", "3–4 mo result"],
+    meta: ["20 min", "Microdose", "3–4 mo result"],
   },
   {
     no: "S/03",
@@ -24,7 +24,7 @@ const featured = [
     caption:
       "High-intensity ultrasound re-scaffolds collagen in the lower face and neck. One appointment, twelve months of build, zero downtime.",
     img: "/images/hifu-treatment.jpg",
-    meta: ["75 min", "from $1,200", "12 mo build"],
+    meta: ["75 min", "Non-surgical", "12 mo build"],
   },
 ];
 

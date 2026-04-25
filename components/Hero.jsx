@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -47,8 +48,8 @@ export default function Hero() {
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <a
-              href="#book"
+            <Link
+              href="/book/consultation"
               className="group inline-flex items-center gap-2 rounded-full bg-ink text-bone pl-4 pr-5 py-3 text-[12px] tracking-wide hover:bg-moss transition-colors"
             >
               <svg
@@ -67,14 +68,14 @@ export default function Hero() {
                 <path d="M8 3v3M16 3v3" />
               </svg>
               Book consultation
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              href="/services"
               className="group inline-flex items-center gap-2 rounded-full bg-bone/85 backdrop-blur-sm text-ink px-5 py-3 text-[12px] tracking-wide border border-ink/10 hover:bg-bone transition-colors"
             >
               View treatments
               <span className="arrow-slide">→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

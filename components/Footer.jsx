@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="relative bg-bone text-ink border-t border-ink/15">
@@ -16,10 +18,11 @@ export default function Footer() {
         <div className="col-span-6 lg:col-span-2">
           <p className="eyebrow text-ink/50 mb-4">Menu</p>
           <ul className="space-y-2 text-[13px]">
-            <li><a href="#services" className="editorial-link">Services</a></li>
-            <li><a href="#signature" className="editorial-link">Signature</a></li>
-            <li><a href="#experience" className="editorial-link">Experience</a></li>
-            <li><a href="#location" className="editorial-link">Location</a></li>
+            <li><Link href="/services" className="editorial-link">Services</Link></li>
+            <li><Link href="/consultation" className="editorial-link">Consultation</Link></li>
+            <li><Link href="/results" className="editorial-link">Results</Link></li>
+            <li><Link href="/contact" className="editorial-link">Contact</Link></li>
+            <li><Link href="/book" className="editorial-link">Book</Link></li>
           </ul>
         </div>
 

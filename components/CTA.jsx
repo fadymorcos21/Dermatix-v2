@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "./Reveal";
 
 export default function CTA() {
@@ -50,13 +51,13 @@ export default function CTA() {
                 Call 1·905·605·8444
                 <span className="arrow-slide">→</span>
               </a>
-              <a
-                href="mailto:clinic@dermatixclinic.com"
+              <Link
+                href="/consultation"
                 className="group inline-flex items-center justify-between gap-3 rounded-full bg-bone text-ink px-7 py-5 text-[13px] tracking-wider2 uppercase hover:bg-champagne transition-colors"
               >
                 Request a consult
                 <span className="arrow-slide">→</span>
-              </a>
+              </Link>
             </div>
           </Reveal>
         </div>
