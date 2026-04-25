@@ -20,7 +20,7 @@ const quotes = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-28 lg:py-40 bg-bone">
+    <section id="testimonials" className="relative py-28 lg:py-40 bg-bone">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <Reveal>
           <p className="eyebrow text-ink/50 mb-3">§ 06 — The notes</p>
