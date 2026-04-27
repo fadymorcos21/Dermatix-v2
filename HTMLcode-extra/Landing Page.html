@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dermatix — Skin, Considered.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ——— TOKENS ——— */
+  :root{
+    --clay-50:  #f5efe8;
+    --clay-100: #ece2d6;
+    --clay-200: #ddcdb9;
+    --clay-300: #c6b39c;
+    --clay-400: #a89079;
+    --clay-500: #836a55;
+    --bone:     #f7f3ee;
+    --ink:      #1a1613;
+    --ink-2:    #2b2520;
+    --ember:    oklch(0.62 0.14 38);   /* warm rust accent */
+    --ember-2:  oklch(0.78 0.08 38);
+    --rule:     rgba(26,22,19,.14);
+    --rule-2:   rgba(26,22,19,.08);
+
+    --serif: "Cormorant Garamond", "Times New Roman", serif;
+    --sans:  "DM Sans", system-ui, -apple-system, sans-serif;
+    --mono:  "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ background:var(--bone); color:var(--ink); }
+  body{
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    background:var(--bone);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  img{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; padding:0; }
+
+  .mono{ font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
+  .serif{ font-family:var(--serif); font-weight:400; }
+  .rule{ height:1px; background:var(--rule); width:100%; }
+  .container{ width:100%; max-width:1480px; margin:0 auto; padding:0 32px; }
+
+  /* ——— TICKER STRIP ——— */
+  .ticker{
+    background:var(--ink);
+    color:var(--bone);
+    padding:10px 0;
+    overflow:hidden;
+    border-bottom:1px solid #000;
+  }
+  .ticker__track{
+    display:flex; gap:48px;
+    white-space:nowrap;
+    animation:ticker 38s linear infinite;
+    width:max-content;
+  }
+  .ticker__item{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.85; display:inline-flex; align-items:center; gap:48px; }
+  .ticker__item::after{ content:"✦"; opacity:.55; font-size:9px; }
+  @keyframes ticker{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ——— NAV ——— */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,243,238,.86);
+    backdrop-filter:saturate(140%) blur(8px);
+    -webkit-backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--rule-2);
+  }
+  .nav__inner{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:18px 32px; gap:24px; }
+  .brand{ display:flex; align-items:center; gap:12px; font-family:var(--serif); font-size:24px; letter-spacing:-.01em; }
+  .brand__dot{ width:9px; height:9px; border-radius:50%; background:var(--ember); display:inline-block; }
+  .brand__sub{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; opacity:.55; text-transform:uppercase; }
+  .nav__links{ display:flex; gap:28px; justify-content:center; }
+  .nav__links a{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.7; transition:opacity .2s; }
+  .nav__links a:hover{ opacity:1; }
+  .nav__cta{ display:flex; gap:16px; justify-content:flex-end; align-items:center; }
+  .nav__cta .pill{
+    border:1px solid var(--ink); padding:10px 18px; border-radius:999px;
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+    transition:all .25s;
+  }
+  .nav__cta .pill:hover{ background:var(--ink); color:var(--bone); }
+  .nav__cta .pill--filled{ background:var(--ink); color:var(--bone); }
+  .nav__cta .pill--filled:hover{ background:var(--ember); border-color:var(--ember); }
+
+  /* ——— HERO ——— */
+  .hero{
+    position:relative;
+    padding:0 32px 0 32px;
+    border-bottom:1px solid var(--rule);
+  }
+  .hero__grid{
+    display:grid;
+    grid-template-columns: 1.05fr 1.4fr;
+    gap:32px;
+    padding:48px 0 24px;
+    align-items:end;
+    min-height: 78vh;
+  }
+  .hero__left{
+    display:flex; flex-direction:column; justify-content:space-between;
+    height:100%;
+    padding-bottom:8px;
+  }
+  .hero__eyebrow{ display:flex; align-items:center; gap:14px; }
+  .hero__eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--ember); animation:pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.4; transform:scale(1.3)} }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(64px, 9.5vw, 168px);
+    line-height:.92;
+    letter-spacing:-0.025em;
+    margin:48px 0 0;
+    color:var(--ink);
+  }
+  .hero h1 .it{ font-style:italic; font-weight:300; color:var(--clay-500); }
+  .hero h1 .amp{ font-style:italic; color:var(--ember); font-weight:300; }
+  .hero__lede{
+    font-family:var(--serif);
+    font-size:21px;
+    line-height:1.45;
+    max-width:38ch;
+    margin:36px 0 0;
+    color:var(--ink-2);
+  }
+  .hero__meta{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+    margin-top:36px;
+    border-top:1px solid var(--rule);
+    padding-top:18px;
+  }
+  .hero__meta div{ display:flex; flex-direction:column; gap:4px; }
+  .hero__meta .k{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; }
+  .hero__meta .v{ font-family:var(--serif); font-size:22px; }
+
+  .hero__right{
+    position:relative;
+    height:100%;
+    min-height:560px;
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .hero__photo{
+    position:absolute; inset:0;
+    background:url("images/hero-portrait.jpg") center/cover no-repeat;
+    background-position: 60% 40%;
+    filter:contrast(1.02) saturate(.92);
+  }
+  .hero__photo::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(247,243,238,.0) 55%, rgba(26,22,19,.18) 100%),
+      linear-gradient(90deg, rgba(247,243,238,.18), transparent 30%);
+    pointer-events:none;
+  }
+  /* film grain */
+  .hero__right::before{
+    content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:overlay; opacity:.18;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    z-index:2;
+  }
+
+  /* HUD overlay on hero photo */
+  .hud{ position:absolute; inset:0; pointer-events:none; z-index:3; color:var(--bone); }
+  .hud__corner{ position:absolute; font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; opacity:.85; display:flex; align-items:center; gap:8px; }
+  .hud__corner.tl{ top:18px; left:18px; }
+  .hud__corner.tr{ top:18px; right:18px; }
+  .hud__corner.bl{ bottom:18px; left:18px; }
+  .hud__corner.br{ bottom:18px; right:18px; }
+  .hud__line{ height:1px; width:40px; background:rgba(247,243,238,.6); }
+  .hud__crosshair{
+    position:absolute; width:88px; height:88px; pointer-events:none;
+    border:1px solid rgba(247,243,238,.5); border-radius:50%;
+  }
+  .hud__crosshair::before, .hud__crosshair::after{
+    content:""; position:absolute; background:rgba(247,243,238,.5);
+  }
+  .hud__crosshair::before{ left:50%; top:-10px; bottom:-10px; width:1px; }
+  .hud__crosshair::after { top:50%; left:-10px; right:-10px; height:1px; }
+  .hud__crosshair .lbl{
+    position:absolute; left:calc(100% + 10px); top:50%; transform:translateY(-50%);
+    font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap;
+    color:var(--bone);
+  }
+
+  .hud__tag{
+    position:absolute; bottom:54px; left:24px;
+    display:flex; align-items:center; gap:10px;
+    background:rgba(26,22,19,.55);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(247,243,238,.18);
+    padding:10px 14px;
+    border-radius:999px;
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase;
+    pointer-events:auto;
+  }
+  .hud__tag .live{ width:7px; height:7px; border-radius:50%; background:#74e08c; box-shadow:0 0 0 0 rgba(116,224,140,.6); animation:livepulse 1.6s ease-out infinite; }
+  @keyframes livepulse{ 0%{box-shadow:0 0 0 0 rgba(116,224,140,.6)} 100%{box-shadow:0 0 0 14px rgba(116,224,140,0)} }
+
+  /* hero base bar */
+  .hero__bar{
+    display:grid; grid-template-columns: auto 1fr auto auto; gap:32px; align-items:center;
+    padding:18px 0;
+    border-top:1px solid var(--rule);
+  }
+  .scroll{ display:flex; align-items:center; gap:10px; opacity:.7; }
+  .scroll__line{ width:36px; height:1px; background:var(--ink); }
+  .marquee-row{ overflow:hidden; }
+  .marquee-row .track{ display:flex; gap:36px; white-space:nowrap; animation:ticker 26s linear infinite; width:max-content; }
+  .marquee-row .track span{ font-family:var(--serif); font-style:italic; font-size:18px; color:var(--clay-500); }
+  .marquee-row .track span::after{ content:" · "; opacity:.5; }
+
+  .cta-pair{ display:flex; gap:10px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 22px; border-radius:999px;
+    border:1px solid var(--ink);
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    transition:all .25s;
+    background:transparent; color:var(--ink);
+  }
+  .btn .arr{ display:inline-block; transition:transform .25s; }
+  .btn:hover .arr{ transform:translateX(4px); }
+  .btn--primary{ background:var(--ink); color:var(--bone); }
+  .btn--primary:hover{ background:var(--ember); border-color:var(--ember); }
+  .btn--ghost:hover{ background:var(--ink); color:var(--bone); }
+
+  /* ——— SECTION SCAFFOLD ——— */
+  section{ padding:120px 32px; position:relative; }
+  .section__head{ display:grid; grid-template-columns:auto 1fr auto; gap:32px; align-items:end; padding-bottom:48px; border-bottom:1px solid var(--rule); margin-bottom:64px; }
+  .section__num{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.55; }
+  .section__title{ font-family:var(--serif); font-size:clamp(40px, 6vw, 88px); line-height:.95; letter-spacing:-.02em; font-weight:400; }
+  .section__title em{ color:var(--ember); font-weight:300; }
+  .section__aside{ font-family:var(--serif); font-style:italic; font-size:20px; max-width:34ch; color:var(--clay-500); align-self:end; padding-bottom:8px; }
+
+  /* ——— PHILOSOPHY ——— */
+  .philo{
+    display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:start;
+  }
+  .philo__lede{
+    font-family:var(--serif); font-weight:300;
+    font-size:clamp(28px, 3vw, 44px);
+    line-height:1.2;
+    letter-spacing:-.01em;
+  }
+  .philo__lede em{ font-style:italic; color:var(--ember); }
+  .philo__cols{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .philo__cols h4{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; margin:0 0 12px; opacity:.7; }
+  .philo__cols p{ margin:0; font-size:15px; line-height:1.6; color:var(--ink-2); }
+
+  /* ——— TREATMENTS ——— */
+  .treatments{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap:24px;
+  }
+  .tx{
+    position:relative;
+    border:1px solid var(--rule);
+    overflow:hidden;
+    transition: transform .5s cubic-bezier(.22,.61,.36,1), border-color .3s;
+    background:var(--clay-50);
+    cursor:pointer;
+  }
+  .tx:hover{ border-color:var(--ink); }
+  .tx:hover .tx__media{ transform:scale(1.04); }
+  .tx:hover .tx__title{ color:var(--ember); }
+  .tx__media{
+    height:340px;
+    background-size:cover; background-position:center;
+    transition:transform .8s cubic-bezier(.22,.61,.36,1);
+    position:relative;
+  }
+  .tx__media::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 50%, rgba(26,22,19,.35));
+  }
+  .tx__num{
+    position:absolute; top:14px; left:14px; z-index:2;
+    color:var(--bone);
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
+    background:rgba(26,22,19,.4); backdrop-filter:blur(6px);
+    border:1px solid rgba(247,243,238,.2);
+    padding:6px 10px; border-radius:99px;
+  }
+  .tx__time{
+    position:absolute; bottom:14px; right:14px; z-index:2;
+    color:var(--bone);
+    font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+  }
+  .tx__body{ padding:22px 22px 26px; display:flex; flex-direction:column; gap:14px; }
+  .tx__title{ font-family:var(--serif); font-size:32px; line-height:1; letter-spacing:-.01em; transition:color .25s; }
+  .tx__desc{ font-size:14px; color:var(--ink-2); line-height:1.5; max-width:38ch; }
+  .tx__foot{ display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--rule); margin-top:auto; }
+  .tx__price{ font-family:var(--serif); font-size:22px; }
+  .tx__cta{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; display:inline-flex; align-items:center; gap:6px; }
+
+  .tx--lg{ grid-column: span 6; }
+  .tx--md{ grid-column: span 4; }
+  .tx--sm{ grid-column: span 3; }
+  .tx--wide{ grid-column: span 8; }
+
+  /* placeholder media using SVG patterns (no real photo) */
+  .ph-clay { background:
+      repeating-linear-gradient(135deg, #c6b39c 0 6px, #b8a48b 6px 12px),
+      #c6b39c; }
+  .ph-stone{ background:
+      repeating-linear-gradient(135deg, #ddcdb9 0 6px, #cebfa9 6px 12px),
+      #ddcdb9; }
+  .ph-bone { background:
+      repeating-linear-gradient(135deg, #ece2d6 0 6px, #ddd0c0 6px 12px),
+      #ece2d6; }
+  .ph-ember{ background:
+      repeating-linear-gradient(135deg, oklch(0.62 0.14 38) 0 6px, oklch(0.55 0.14 38) 6px 12px); }
+  .ph-ink  { background:
+      repeating-linear-gradient(135deg, #2b2520 0 6px, #1a1613 6px 12px); }
+  .ph-mark{ position:absolute; bottom:50%; left:50%; transform:translate(-50%,50%);
+            font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+            color:rgba(247,243,238,.7); white-space:nowrap; z-index:1; }
+
+  /* ——— PROCESS / NUMBERED ——— */
+  .process{ display:grid; grid-template-columns: 1fr 1fr; gap:0; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); }
+  .step{ padding:36px 36px 36px 0; display:grid; grid-template-columns: 80px 1fr 1fr; gap:24px; align-items:start; border-bottom:1px solid var(--rule); position:relative; }
+  .step:nth-child(odd){ border-right:1px solid var(--rule); padding-right:36px; }
+  .step:nth-child(even){ padding-left:36px; }
+  .step:nth-last-child(-n+2){ border-bottom:0; }
+  .step__num{ font-family:var(--serif); font-size:64px; line-height:1; color:var(--ember); }
+  .step__title{ font-family:var(--serif); font-size:28px; line-height:1.05; letter-spacing:-.01em; }
+  .step__desc{ font-size:14px; color:var(--ink-2); line-height:1.55; }
+
+  /* ——— BEFORE / AFTER SLIDER ——— */
+  .ba{
+    display:grid; grid-template-columns: 1fr 1fr; gap:48px; align-items:center;
+  }
+  .ba__media{
+    position:relative;
+    aspect-ratio: 4/5;
+    border:1px solid var(--rule);
+    overflow:hidden;
+    background:var(--clay-100);
+    user-select:none;
+  }
+  .ba__before, .ba__after{ position:absolute; inset:0; }
+  .ba__before{ background:
+      linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.18)),
+      url("images/hero-portrait.jpg") center/cover;
+      filter: contrast(.92) saturate(.7) brightness(.92);
+  }
+  .ba__after{ background:
+      url("images/hero-portrait.jpg") center/cover;
+      filter: contrast(1.08) saturate(1.05) brightness(1.05);
+      clip-path: inset(0 0 0 50%);
+  }
+  .ba__handle{
+    position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--bone);
+    box-shadow:0 0 0 1px rgba(0,0,0,.2);
+    transform:translateX(-1px);
+  }
+  .ba__knob{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:48px; height:48px; border-radius:50%;
+    background:var(--bone); border:1px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:14px;
+    cursor:ew-resize;
+    box-shadow:0 6px 24px rgba(0,0,0,.18);
+  }
+  .ba__lbl{
+    position:absolute; top:18px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--bone);
+    background:rgba(26,22,19,.55);
+    padding:6px 12px; border-radius:99px;
+    backdrop-filter:blur(6px);
+  }
+  .ba__lbl.l{ left:18px; }
+  .ba__lbl.r{ right:18px; }
+  .ba__copy h3{ font-family:var(--serif); font-size:clamp(40px,5vw,72px); line-height:.98; letter-spacing:-.02em; font-weight:400; margin:0 0 24px; }
+  .ba__copy h3 em{ color:var(--ember); }
+  .ba__copy p{ font-family:var(--serif); font-size:20px; line-height:1.45; color:var(--ink-2); margin:0 0 32px; max-width:42ch; }
+  .ba__stats{ display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--rule); }
+  .ba__stat{ padding:20px 16px 0 0; }
+  .ba__stat .n{ font-family:var(--serif); font-size:48px; line-height:1; }
+  .ba__stat .n .pct{ font-size:24px; opacity:.6; }
+  .ba__stat .l{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; margin-top:8px; }
+
+  /* ——— PRICE LIST ——— */
+  .pricelist{
+    display:grid; grid-template-columns: 2fr 3fr; gap:64px;
+  }
+  .pl__intro{ position:sticky; top:120px; align-self:start; }
+  .pl__intro h3{ font-family:var(--serif); font-size:clamp(40px,5vw,72px); line-height:.98; letter-spacing:-.02em; font-weight:400; margin:0 0 20px; }
+  .pl__intro p{ font-size:15px; color:var(--ink-2); line-height:1.6; max-width:40ch; }
+  .pl__group{ margin-bottom:48px; }
+  .pl__group h4{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.55; margin:0 0 18px; padding-bottom:14px; border-bottom:1px solid var(--ink); }
+  .pl__row{
+    display:grid; grid-template-columns: 1fr auto auto; gap:24px; align-items:baseline;
+    padding:18px 0; border-bottom:1px solid var(--rule);
+    cursor:pointer; transition:padding .25s;
+  }
+  .pl__row:hover{ padding-left:8px; }
+  .pl__row:hover .pl__name{ color:var(--ember); }
+  .pl__name{ font-family:var(--serif); font-size:24px; transition:color .25s; }
+  .pl__name small{ font-family:var(--sans); font-size:13px; color:var(--ink-2); margin-left:14px; opacity:.7; }
+  .pl__time{ font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.55; }
+  .pl__price{ font-family:var(--serif); font-size:24px; min-width:80px; text-align:right; }
+
+  /* ——— TESTIMONIAL ——— */
+  .testimonial{
+    background:var(--ink); color:var(--bone);
+    padding:140px 32px;
+    position:relative; overflow:hidden;
+  }
+  .testimonial::before{
+    content:""; position:absolute; inset:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:.05; pointer-events:none;
+  }
+  .testimonial__inner{ max-width:1480px; margin:0 auto; position:relative; }
+  .testimonial__head{ display:flex; justify-content:space-between; padding-bottom:32px; border-bottom:1px solid rgba(247,243,238,.15); margin-bottom:48px; }
+  .testimonial__head .mono{ opacity:.6; }
+  .testimonial blockquote{
+    font-family:var(--serif); font-weight:300;
+    font-size:clamp(36px, 5vw, 78px);
+    line-height:1.05; letter-spacing:-.02em;
+    margin:0; max-width:22ch;
+  }
+  .testimonial blockquote em{ font-style:italic; color:var(--ember-2); }
+  .testimonial__meta{ display:flex; justify-content:space-between; align-items:end; margin-top:60px; }
+  .testimonial__author{ display:flex; align-items:center; gap:18px; }
+  .testimonial__avatar{
+    width:56px; height:56px; border-radius:50%;
+    background:url("images/hero-portrait.jpg") 60% 30%/cover;
+    border:1px solid rgba(247,243,238,.2);
+  }
+  .testimonial__name{ font-family:var(--serif); font-size:22px; }
+  .testimonial__role{ font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; }
+  .testimonial__nav{ display:flex; gap:10px; }
+  .testimonial__nav button{
+    width:48px; height:48px; border-radius:50%;
+    border:1px solid rgba(247,243,238,.25); color:var(--bone);
+    transition:all .2s;
+  }
+  .testimonial__nav button:hover{ background:var(--bone); color:var(--ink); }
+
+  /* ——— BOOK STRIP ——— */
+  .book{
+    padding:0; position:relative;
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  }
+  .book__inner{
+    display:grid; grid-template-columns: 1.4fr 1fr;
+    align-items:stretch; min-height:560px;
+  }
+  .book__copy{ padding:96px 48px 96px 32px; display:flex; flex-direction:column; justify-content:space-between; }
+  .book__copy h3{ font-family:var(--serif); font-size:clamp(48px,7vw,128px); line-height:.92; letter-spacing:-.025em; font-weight:400; margin:0; }
+  .book__copy h3 em{ font-style:italic; color:var(--ember); font-weight:300; }
+  .book__form{ background:var(--ink); color:var(--bone); padding:48px; display:flex; flex-direction:column; gap:18px; }
+  .book__form h4{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; opacity:.6; margin:0 0 8px; }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field label{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.55; }
+  .field input, .field select{
+    background:transparent; border:0; border-bottom:1px solid rgba(247,243,238,.2);
+    color:var(--bone); padding:10px 0; font-family:var(--serif); font-size:20px;
+    appearance:none; outline:none;
+  }
+  .field input::placeholder{ color:rgba(247,243,238,.35); }
+  .field input:focus, .field select:focus{ border-bottom-color:var(--ember); }
+  .field select option{ background:var(--ink); color:var(--bone); }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .book__submit{
+    margin-top:8px; padding:18px 22px;
+    background:var(--bone); color:var(--ink);
+    font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    border-radius:99px; transition:all .25s;
+    display:inline-flex; align-items:center; justify-content:space-between;
+  }
+  .book__submit:hover{ background:var(--ember); color:var(--bone); }
+
+  /* ——— FOOTER ——— */
+  footer{ padding:80px 32px 36px; background:var(--bone); border-top:1px solid var(--rule); }
+  .foot__grid{ display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:48px; max-width:1480px; margin:0 auto; }
+  .foot__brand{ font-family:var(--serif); font-size:clamp(56px, 7vw, 120px); line-height:.92; letter-spacing:-.02em; }
+  .foot__brand em{ color:var(--ember); }
+  .foot__col h5{ font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; opacity:.55; margin:0 0 16px; }
+  .foot__col ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
+  .foot__col a{ font-family:var(--serif); font-size:18px; }
+  .foot__col a:hover{ color:var(--ember); }
+  .foot__bottom{ max-width:1480px; margin:64px auto 0; padding-top:24px; border-top:1px solid var(--rule); display:flex; justify-content:space-between; font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; opacity:.55; }
+
+  /* ——— RESPONSIVE ——— */
+  @media (max-width: 1100px){
+    .hero__grid{ grid-template-columns:1fr; padding-top:32px; }
+    .hero__right{ min-height:60vh; order:-1; }
+    .philo, .ba, .pricelist, .book__inner{ grid-template-columns:1fr; gap:48px; }
+    .tx--lg, .tx--md, .tx--sm, .tx--wide{ grid-column: span 6; }
+    .process{ grid-template-columns:1fr; }
+    .step:nth-child(odd){ border-right:0; padding-right:0; }
+    .step:nth-child(even){ padding-left:0; }
+    .nav__links{ display:none; }
+    .nav__inner{ grid-template-columns:auto 1fr; }
+  }
+  @media (max-width:680px){
+    .container,section,.nav__inner{ padding-left:18px; padding-right:18px; }
+    .hero{ padding:0 18px; }
+    .treatments{ grid-template-columns:1fr; }
+    .tx--lg, .tx--md, .tx--sm, .tx--wide{ grid-column: span 1; }
+    .field-row{ grid-template-columns:1fr; }
+    .foot__grid{ grid-template-columns:1fr 1fr; }
+    .hero__meta{ grid-template-columns:1fr 1fr; }
+    .section__head{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span class="ticker__item">Now booking — Spring '26</span>
+    <span class="ticker__item">Board-certified dermatology</span>
+    <span class="ticker__item">Soho · West Village · Tribeca</span>
+    <span class="ticker__item">Members save 18% on quarterly visits</span>
+    <span class="ticker__item">New: Vitamin Drip Lounge</span>
+    <span class="ticker__item">Now booking — Spring '26</span>
+    <span class="ticker__item">Board-certified dermatology</span>
+    <span class="ticker__item">Soho · West Village · Tribeca</span>
+    <span class="ticker__item">Members save 18% on quarterly visits</span>
+    <span class="ticker__item">New: Vitamin Drip Lounge</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <div class="brand">
+      <span class="brand__dot"></span>
+      <span>Dermatix</span>
+      <span class="brand__sub">Est. 2019 · NYC</span>
+    </div>
+    <div class="nav__links">
+      <a href="#treatments">Treatments</a>
+      <a href="#process">Method</a>
+      <a href="#results">Results</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#journal">Journal</a>
+      <a href="#studios">Studios</a>
+    </div>
+    <div class="nav__cta">
+      <a href="#" class="pill">Members</a>
+      <a href="#book" class="pill pill--filled">Book a Visit →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__grid">
+    <!-- LEFT -->
+    <div class="hero__left">
+      <div>
+        <div class="hero__eyebrow mono">
+          <span class="dot"></span><span>Issue Nº 07 — The Skin Edition</span>
+        </div>
+        <h1>
+          Skin,<br>
+          <span class="it">considered</span><br>
+          <span class="amp">&amp;</span> cared for.
+        </h1>
+        <p class="hero__lede">
+          A dermatology studio for the people who treat their face like a first impression. Clinical-grade results, delivered with the calm of a private atelier.
+        </p>
+        <div class="hero__meta">
+          <div><span class="k">Locations</span><span class="v">3 Studios</span></div>
+          <div><span class="k">Treatments</span><span class="v">42 Services</span></div>
+          <div><span class="k">Specialists</span><span class="v">11 MDs</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — PHOTO + HUD -->
+    <div class="hero__right">
+      <div class="hero__photo"></div>
+      <div class="hud">
+        <div class="hud__corner tl"><span class="hud__line"></span><span>FILE 07.24 — DRX</span></div>
+        <div class="hud__corner tr"><span>40°44'N 73°59'W</span><span class="hud__line"></span></div>
+        <div class="hud__corner bl"><span class="hud__line"></span><span>SPF DAY 12</span></div>
+        <div class="hud__corner br"><span>VIEW · 01 / 04</span><span class="hud__line"></span></div>
+
+        <div class="hud__crosshair" style="top:34%; left:58%;">
+          <span class="lbl">— Hyaluronic glow · pH 5.4</span>
+        </div>
+        <div class="hud__crosshair" style="top:62%; left:74%; width:54px; height:54px;">
+          <span class="lbl">— Lift sequence · 14m</span>
+        </div>
+
+        <div class="hud__tag">
+          <span class="live"></span>
+          <span>3 Suites Available · This Week</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO BAR -->
+  <div class="hero__bar">
+    <div class="scroll mono">
+      <span class="scroll__line"></span>
+      <span>Scroll</span>
+    </div>
+    <div class="marquee-row">
+      <div class="track">
+        <span>Hydrafacial</span><span>Microneedling RF</span><span>Laser Resurfacing</span>
+        <span>Botox &amp; Fillers</span><span>Chemical Peels</span><span>IV Drip Lounge</span>
+        <span>Cryo Facials</span><span>LED Photofacial</span><span>Lymphatic Sculpt</span>
+        <span>Hydrafacial</span><span>Microneedling RF</span><span>Laser Resurfacing</span>
+        <span>Botox &amp; Fillers</span><span>Chemical Peels</span><span>IV Drip Lounge</span>
+      </div>
+    </div>
+    <a href="#book" class="btn btn--primary">Book a Consult <span class="arr">→</span></a>
+    <a href="#treatments" class="btn btn--ghost">Explore Menu <span class="arr">→</span></a>
+  </div>
+</header>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__num">[ 01 ] — Philosophy</div>
+      <h2 class="section__title">A studio, not a clinic. <em>A protocol, not a product.</em></h2>
+      <p class="section__aside">We borrow rigor from medicine and grace from interior design.</p>
+    </div>
+    <div class="philo">
+      <p class="philo__lede">
+        Dermatix exists for the diminishing returns no one talks about — the moment when “good” skin needs the eye of a specialist to become <em>extraordinary</em>. We start with diagnosis, not menus.
+      </p>
+      <div class="philo__cols">
+        <div>
+          <h4>— Clinically led</h4>
+          <p>Every protocol is designed and supervised by a board-certified dermatologist. No rotating staff, no upsell scripts.</p>
+        </div>
+        <div>
+          <h4>— Evidence-first</h4>
+          <p>We ignore trends. Every device, peel and active in the studio is FDA-cleared and tracked over twelve months of patient outcomes.</p>
+        </div>
+        <div>
+          <h4>— Designed in</h4>
+          <p>Suites by Studio Mellor — wide oak floors, daylight from above, and a single chair. No waiting room televisions.</p>
+        </div>
+        <div>
+          <h4>— Quietly priced</h4>
+          <p>We publish every price, every minute, every active. Members keep one card on file; statements arrive once a quarter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- TREATMENTS -->
+<section id="treatments">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__num">[ 02 ] — The Menu</div>
+      <h2 class="section__title">Forty-two ways to <em>look like yourself</em>.</h2>
+      <p class="section__aside">Each protocol is a duet between device, hand, and time.</p>
+    </div>
+
+    <div class="treatments">
+
+      <article class="tx tx--lg">
+        <div class="tx__media ph-clay">
+          <span class="tx__num">01 — Signature</span>
+          <span class="ph-mark">[ photograph · resurfacing ritual ]</span>
+          <span class="tx__time">90 min</span>
+        </div>
+        <div class="tx__body">
+          <h3 class="tx__title">The Resurface Ritual</h3>
+          <p class="tx__desc">A four-stage diamond microderm + lactic peel + LED photo-array, finished with a calibrated cold-jade lymph press. Our most-requested visit, named in the press more than we can keep track of.</p>
+          <div class="tx__foot">
+            <span class="tx__price">From $385</span>
+            <span class="tx__cta">Read protocol →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tx tx--md">
+        <div class="tx__media ph-stone">
+          <span class="tx__num">02 — Lift</span>
+          <span class="ph-mark">[ ultrasound · sculpt ]</span>
+          <span class="tx__time">60 min</span>
+        </div>
+        <div class="tx__body">
+          <h3 class="tx__title">Sculpt &amp; Lift</h3>
+          <p class="tx__desc">Microfocused ultrasound to firm the lower face — the closest a non-surgical visit comes to a true lift.</p>
+          <div class="tx__foot">
+            <span class="tx__price">From $620</span>
+            <span class="tx__cta">Read protocol →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tx tx--sm">
+        <div class="tx__media ph-ember">
+          <span class="tx__num">03 — Laser</span>
+          <span class="tx__time">45 min</span>
+        </div>
+        <div class="tx__body">
+          <h3 class="tx__title">Laser, all wavelengths</h3>
+          <p class="tx__desc">IPL · Nd:YAG · CO₂ fractional — chosen to your skin, not to a marketing brief.</p>
+          <div class="tx__foot">
+            <span class="tx__price">From $295</span>
+            <span class="tx__cta">→</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tx tx--sm">
+        <div class="tx__media ph-bone">
+          <span class="tx__num">04 — Inject</span>
+          <span class="tx__time">30 min</span>
+        </div>
+        <div class="tx__body">
+          <h3 class="tx__title">Quiet Injectables</h3>
+          <p class="tx__desc">Botox &amp; light filler. The brief is always: nobody should be able to tell.</p>
+          <div class="tx__foot">
+            <span class="tx__price">From $14/u</span>
+            <span class="tx__cta">→</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tx tx--md">
+        <div class="tx__media ph-ink">
+          <span class="tx__num">05 — Drip</span>
+          <span class="ph-mark">[ vitamin · iv lounge ]</span>
+          <span class="tx__time">40 min</span>
+        </div>
+        <div class="tx__body">
+          <h3 class="tx__title">The Drip Lounge</h3>
+          <p class="tx__desc">Glutathione, NAD+, B-complex, hydration. Reclining chairs, one window, no Wi-Fi.</p>
+          <div class="tx__foot">
+            <span class="tx__price">From $210</span>
+            <span class="tx__cta">Read protocol →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tx tx--md">
+        <div class="tx__media ph-clay">
+          <span class="tx__num">06 — Peel</span>
+          <span class="tx__time">35 min</span>
+        </div>
+        <div class="tx__body">
+          <h3 class="tx__title">Bespoke Peels</h3>
+          <p class="tx__desc">Mandelic, glycolic, TCA — blended at the bench for your week ahead.</p>
+          <div class="tx__foot">
+            <span class="tx__price">From $185</span>
+            <span class="tx__cta">→</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tx tx--md">
+        <div class="tx__media ph-stone">
+          <span class="tx__num">07 — Microneedle</span>
+          <span class="tx__time">75 min</span>
+        </div>
+        <div class="tx__body">
+          <h3 class="tx__title">Microneedle RF</h3>
+          <p class="tx__desc">Collagen induction with bipolar radiofrequency. Comfortable downtime, week-long bloom.</p>
+          <div class="tx__foot">
+            <span class="tx__price">From $475</span>
+            <span class="tx__cta">→</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__num">[ 03 ] — The Method</div>
+      <h2 class="section__title">How a visit <em>actually</em> goes.</h2>
+      <p class="section__aside">No upsell scripts. No mystery additions on the receipt.</p>
+    </div>
+    <div class="process">
+      <div class="step">
+        <div class="step__num">01</div>
+        <div class="step__title">Diagnostic — 20m</div>
+        <p class="step__desc">A board-certified dermatologist reviews your skin under VISIA imaging and writes the protocol you'll receive in your portal that evening.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">02</div>
+        <div class="step__title">Treatment — 30 to 90m</div>
+        <p class="step__desc">A single specialist, in a single suite, delivering a single agreed-upon plan. The price you saw is the price you pay.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">03</div>
+        <div class="step__title">Recovery — 15m</div>
+        <p class="step__desc">Tea and a quiet room. A nurse walks through your at-home calendar — what to use Monday, what to avoid Wednesday.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">04</div>
+        <div class="step__title">Follow-up — 14d</div>
+        <p class="step__desc">A check-in photograph and call from the same dermatologist. Adjustments are free for ninety days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- BEFORE / AFTER -->
+<section id="results">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__num">[ 04 ] — The Evidence</div>
+      <h2 class="section__title">Before, <em>after</em>, and what you'd actually see.</h2>
+      <p class="section__aside">All photographs are clinical, unretouched and patient-released.</p>
+    </div>
+    <div class="ba">
+      <div class="ba__media" id="ba">
+        <div class="ba__before"></div>
+        <div class="ba__after" id="baAfter"></div>
+        <div class="ba__handle" id="baHandle"></div>
+        <div class="ba__knob" id="baKnob" aria-label="Drag to compare">↔</div>
+        <span class="ba__lbl l">Before · Day 0</span>
+        <span class="ba__lbl r">After · Week 12</span>
+      </div>
+      <div class="ba__copy">
+        <h3>The slow miracle of <em>doing less, well</em>.</h3>
+        <p>Twelve weeks of the Resurface Ritual, paired with a daily routine of three actives. Photographed under the same daylight, at the same time, in the same chair.</p>
+        <div class="ba__stats">
+          <div class="ba__stat">
+            <div class="n">94<span class="pct">%</span></div>
+            <div class="l">Reported smoother texture</div>
+          </div>
+          <div class="ba__stat">
+            <div class="n">2.8<span class="pct">×</span></div>
+            <div class="l">Hyaluronic retention</div>
+          </div>
+          <div class="ba__stat">
+            <div class="n">12<span class="pct">wk</span></div>
+            <div class="l">Avg. visible result</div>
+          </div>
+        </div>
+        <div style="margin-top:32px;">
+          <a href="#book" class="btn btn--primary">Start your protocol <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="testimonial__inner">
+    <div class="testimonial__head">
+      <span class="mono">[ 05 ] — In her own words</span>
+      <span class="mono">Member · 04 years</span>
+    </div>
+    <blockquote>
+      “I've been treated at six clinics in three cities. Dermatix is the first that ever felt like <em>a relationship</em>, not a transaction. My skin agrees.”
+    </blockquote>
+    <div class="testimonial__meta">
+      <div class="testimonial__author">
+        <div class="testimonial__avatar"></div>
+        <div>
+          <div class="testimonial__name">Eliana Voss</div>
+          <div class="testimonial__role">Editor-in-Chief · Atlas Quarterly</div>
+        </div>
+      </div>
+      <div class="testimonial__nav">
+        <button aria-label="Previous">←</button>
+        <button aria-label="Next">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE LIST -->
+<section id="pricing">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__num">[ 06 ] — The Price List</div>
+      <h2 class="section__title">Everything we do, <em>and what it costs.</em></h2>
+      <p class="section__aside">Prices are the same in every studio. Members save 18% on every line.</p>
+    </div>
+    <div class="pricelist">
+      <div class="pl__intro">
+        <h3>No mystery surcharges.</h3>
+        <p>Every line below includes the dermatologist diagnostic, the treatment, the in-suite recovery, and the at-home calendar that lands in your portal that evening.</p>
+        <a href="#book" class="btn btn--primary" style="margin-top:24px;">Book any treatment <span class="arr">→</span></a>
+      </div>
+      <div class="pl__lists">
+
+        <div class="pl__group">
+          <h4>— Skin · Resurfacing &amp; Texture</h4>
+          <div class="pl__row"><span class="pl__name">Resurface Ritual <small>signature 4-stage</small></span><span class="pl__time">90 min</span><span class="pl__price">$385</span></div>
+          <div class="pl__row"><span class="pl__name">Hydrafacial Studio <small>w/ booster</small></span><span class="pl__time">60 min</span><span class="pl__price">$245</span></div>
+          <div class="pl__row"><span class="pl__name">Microneedle RF</span><span class="pl__time">75 min</span><span class="pl__price">$475</span></div>
+          <div class="pl__row"><span class="pl__name">Bespoke Chemical Peel</span><span class="pl__time">35 min</span><span class="pl__price">$185</span></div>
+          <div class="pl__row"><span class="pl__name">Dermaplane &amp; Mask</span><span class="pl__time">45 min</span><span class="pl__price">$165</span></div>
+        </div>
+
+        <div class="pl__group">
+          <h4>— Devices · Laser &amp; Light</h4>
+          <div class="pl__row"><span class="pl__name">IPL Photofacial</span><span class="pl__time">40 min</span><span class="pl__price">$295</span></div>
+          <div class="pl__row"><span class="pl__name">Nd:YAG Vascular</span><span class="pl__time">30 min</span><span class="pl__price">$320</span></div>
+          <div class="pl__row"><span class="pl__name">CO₂ Fractional <small>by consult</small></span><span class="pl__time">90 min</span><span class="pl__price">$1,250</span></div>
+          <div class="pl__row"><span class="pl__name">Sculpt &amp; Lift Ultrasound</span><span class="pl__time">60 min</span><span class="pl__price">$620</span></div>
+        </div>
+
+        <div class="pl__group">
+          <h4>— Quiet · Injectables</h4>
+          <div class="pl__row"><span class="pl__name">Botox / Dysport <small>per unit</small></span><span class="pl__time">25 min</span><span class="pl__price">$14</span></div>
+          <div class="pl__row"><span class="pl__name">Hyaluronic Filler <small>per syringe</small></span><span class="pl__time">45 min</span><span class="pl__price">$795</span></div>
+          <div class="pl__row"><span class="pl__name">Bio-Stim Sculpt <small>Sculptra · Radiesse</small></span><span class="pl__time">45 min</span><span class="pl__price">$895</span></div>
+          <div class="pl__row"><span class="pl__name">Polynucleotide Skin Booster</span><span class="pl__time">30 min</span><span class="pl__price">$540</span></div>
+        </div>
+
+        <div class="pl__group">
+          <h4>— Lounge · Wellness</h4>
+          <div class="pl__row"><span class="pl__name">Vitamin Drip — Glow</span><span class="pl__time">40 min</span><span class="pl__price">$210</span></div>
+          <div class="pl__row"><span class="pl__name">Vitamin Drip — NAD+ <small>250mg</small></span><span class="pl__time">90 min</span><span class="pl__price">$485</span></div>
+          <div class="pl__row"><span class="pl__name">Lymphatic Sculpt Massage</span><span class="pl__time">60 min</span><span class="pl__price">$215</span></div>
+          <div class="pl__row"><span class="pl__name">Cryo Facial</span><span class="pl__time">25 min</span><span class="pl__price">$140</span></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section id="book" style="padding:0;">
+  <div class="book">
+    <div class="book__inner">
+      <div class="book__copy">
+        <div>
+          <div class="mono" style="opacity:.55;">[ 07 ] — Book a Visit</div>
+          <h3 style="margin-top:24px;">Begin a<br><em>quiet</em> protocol.</h3>
+        </div>
+        <div style="display:flex; gap:48px; padding-top:32px; border-top:1px solid var(--rule); margin-top:48px;">
+          <div>
+            <div class="mono" style="opacity:.55; margin-bottom:6px;">Open Today</div>
+            <div class="serif" style="font-size:22px;">9:00 — 21:00</div>
+          </div>
+          <div>
+            <div class="mono" style="opacity:.55; margin-bottom:6px;">Concierge</div>
+            <div class="serif" style="font-size:22px;">+1 212 555 0144</div>
+          </div>
+          <div>
+            <div class="mono" style="opacity:.55; margin-bottom:6px;">Email</div>
+            <div class="serif" style="font-size:22px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="582b2c2d3c3137183c3d2a35392c3120763b37">[email&#160;protected]</a></div>
+          </div>
+        </div>
+      </div>
+      <form class="book__form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Reserved ✓'; setTimeout(()=>{this.reset(); this.querySelector('button').innerHTML='Reserve a suite <span>→</span>'},1800);">
+        <h4>— Reserve a suite</h4>
+        <div class="field">
+          <label for="bk-name">Your name</label>
+          <input id="bk-name" type="text" placeholder="First and last" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bk-email">Email</label>
+            <input id="bk-email" type="email" placeholder="you@studio.co" required>
+          </div>
+          <div class="field">
+            <label for="bk-phone">Phone</label>
+            <input id="bk-phone" type="tel" placeholder="(212) 555 0000">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bk-tx">Treatment</label>
+            <select id="bk-tx" required>
+              <option>Resurface Ritual — 90m</option>
+              <option>Sculpt &amp; Lift — 60m</option>
+              <option>Microneedle RF — 75m</option>
+              <option>Quiet Injectables — 30m</option>
+              <option>Bespoke Peel — 35m</option>
+              <option>Drip Lounge — 40m</option>
+              <option>Diagnostic Consult — 20m</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bk-loc">Studio</label>
+            <select id="bk-loc">
+              <option>Soho · Mercer St</option>
+              <option>West Village · Bank St</option>
+              <option>Tribeca · Franklin St</option>
+            </select>
+          </div>
+        </div>
+        <button class="book__submit" type="submit">Reserve a suite <span>→</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot__grid">
+    <div class="foot__brand">
+      Dermatix.<br>
+      <em>Skin, considered.</em>
+    </div>
+    <div class="foot__col">
+      <h5>— Studios</h5>
+      <ul>
+        <li><a>Soho — Mercer</a></li>
+        <li><a>West Village — Bank</a></li>
+        <li><a>Tribeca — Franklin</a></li>
+        <li><a>Hamptons (Seasonal)</a></li>
+      </ul>
+    </div>
+    <div class="foot__col">
+      <h5>— Studio</h5>
+      <ul>
+        <li><a>The Method</a></li>
+        <li><a>Specialists</a></li>
+        <li><a>The Journal</a></li>
+        <li><a>Press</a></li>
+      </ul>
+    </div>
+    <div class="foot__col">
+      <h5>— Membership</h5>
+      <ul>
+        <li><a>Members Portal</a></li>
+        <li><a>Gift a Visit</a></li>
+        <li><a>Concierge</a></li>
+        <li><a>Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot__bottom">
+    <span>© Dermatix Studios LLC · 2019 — 2026</span>
+    <span>Privacy · Terms · Accessibility</span>
+    <span>Made in NYC · 40°44'N 73°59'W</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Before/after slider
+  (function(){
+    const wrap = document.getElementById('ba');
+    const after = document.getElementById('baAfter');
+    const handle = document.getElementById('baHandle');
+    const knob = document.getElementById('baKnob');
+    if(!wrap) return;
+    let dragging = false;
+    function setPct(pct){
+      pct = Math.max(0, Math.min(100, pct));
+      after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+      handle.style.left = pct + '%';
+      knob.style.left = pct + '%';
+    }
+    function onMove(e){
+      if(!dragging) return;
+      const rect = wrap.getBoundingClientRect();
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      setPct((x / rect.width) * 100);
+    }
+    knob.addEventListener('mousedown', ()=>dragging=true);
+    knob.addEventListener('touchstart', ()=>dragging=true, {passive:true});
+    window.addEventListener('mouseup', ()=>dragging=false);
+    window.addEventListener('touchend', ()=>dragging=false);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, {passive:true});
+    // Animate on load
+    let p = 50, dir = 1, started = false;
+    wrap.addEventListener('mouseenter', ()=>{ if(started) return; started=true;
+      const id = setInterval(()=>{
+        p += dir * 1.2;
+        if(p>=70){ dir=-1; }
+        if(p<=30){ dir=1; clearInterval(id); setPct(50); }
+        setPct(p);
+      }, 24);
+    });
+  })();
+
+  // Subtle parallax on hero photo
+  (function(){
+    const photo = document.querySelector('.hero__photo');
+    if(!photo) return;
+    window.addEventListener('scroll', ()=>{
+      const y = Math.min(120, window.scrollY * 0.18);
+      photo.style.transform = `translateY(${y}px) scale(${1 + y/2000})`;
+    }, {passive:true});
+  })();
+</script>
+
+</body>
+</html>

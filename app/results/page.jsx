@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
+import BeforeAfter from "@/components/BeforeAfter";
 
 export const metadata = {
   title: "Results · Dermatix Clinic Woodbridge",
@@ -114,6 +115,83 @@ export default function ResultsPage() {
                 </figure>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Before / After slider */}
+      <section className="py-20 lg:py-28 bg-bone border-b border-ink/10">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+          <div className="mb-12 lg:mb-16 max-w-3xl">
+            <p className="eyebrow text-ink/50 mb-3">§ The evidence</p>
+            <h2 className="display text-[9vw] lg:text-[5.6rem] leading-[0.95] tracking-tightest">
+              Before, <span className="display-italic text-stone">after</span>,
+              <br />
+              and what you'd actually see.
+            </h2>
+            <p className="mt-5 text-[14px] text-ink/65 max-w-md leading-relaxed">
+              All photographs are clinical, unretouched and patient-released.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <Reveal>
+              <BeforeAfter
+                beforeSrc="/images/editorial-portrait.jpg"
+                afterSrc="/images/editorial-portrait.jpg"
+                beforeLabel="Before · Day 0"
+                afterLabel="After · Week 12"
+              />
+            </Reveal>
+
+            <Reveal delay={140}>
+              <h3 className="display text-[clamp(40px,5vw,72px)] leading-[0.98] tracking-tightest">
+                The slow miracle of{" "}
+                <span className="display-italic text-stone">doing less, well.</span>
+              </h3>
+              <p className="display mt-6 text-[20px] leading-[1.45] text-ink/75 max-w-[42ch]">
+                Twelve weeks of the Resurface Ritual, paired with a daily routine of
+                three actives. Photographed under the same daylight, at the same
+                time, in the same chair.
+              </p>
+
+              <div className="mt-8 grid grid-cols-3 border-t border-ink/15">
+                <div className="pt-5 pr-4">
+                  <div className="display text-[44px] leading-none tracking-tight">
+                    94<span className="text-[22px] text-ink/55 align-top ml-1">%</span>
+                  </div>
+                  <div className="eyebrow text-ink/55 mt-2">
+                    Reported smoother texture
+                  </div>
+                </div>
+                <div className="pt-5 px-4 border-l border-ink/15">
+                  <div className="display text-[44px] leading-none tracking-tight">
+                    2.8<span className="text-[22px] text-ink/55 align-top ml-1">×</span>
+                  </div>
+                  <div className="eyebrow text-ink/55 mt-2">
+                    Hyaluronic retention
+                  </div>
+                </div>
+                <div className="pt-5 pl-4 border-l border-ink/15">
+                  <div className="display text-[44px] leading-none tracking-tight">
+                    12<span className="text-[22px] text-ink/55 align-top ml-1">wk</span>
+                  </div>
+                  <div className="eyebrow text-ink/55 mt-2">
+                    Avg. visible result
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10">
+                <Link
+                  href="/book/consultation"
+                  className="group inline-flex items-center gap-2 rounded-full bg-ink text-bone px-6 py-3.5 text-[12px] tracking-wider2 uppercase hover:bg-moss transition-colors"
+                >
+                  Start your protocol
+                  <span className="arrow-slide">→</span>
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
