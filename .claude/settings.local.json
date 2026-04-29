@@ -3,7 +3,9 @@
     "allow": [
       "Bash(python -c ' *)",
       "Bash(npm run *)",
-      "PowerShell(npm run build 2>&1)"
+      "PowerShell(npm run build 2>&1)",
+      "Bash(unzip -p \"Dermatix Notes Updated.docx\" word/document.xml)",
+      "Read(//tmp/**)"
     ]
   }
 }
