@@ -15,7 +15,7 @@ export default function Marquee() {
   ];
 
   return (
-    <section className="relative py-10 lg:py-14 border-y border-ink/10 bg-cream">
+    <section className="relative py-10 lg:py-14 border-y border-ink/10 bg-[#f0e7d4]">
       <div className="px-6 lg:px-10">
         <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-3 lg:gap-x-8 lg:gap-y-4">
           {items.map((t, i) => (

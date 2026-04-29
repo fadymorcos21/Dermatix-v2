@@ -5,7 +5,13 @@ import { services } from "@/lib/services";
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-24 lg:py-36 bg-bone">
+    <section
+      id="services"
+      className="relative py-9 lg:py-16"
+      style={{
+        background: "linear-gradient(to bottom, #f8f4ef 0, #f6f1e7 220px)",
+      }}
+    >
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-14 lg:mb-20">
           <Reveal>
@@ -18,8 +24,9 @@ export default function Services() {
           </Reveal>
           <Reveal delay={140} className="max-w-sm">
             <p className="text-[14px] leading-relaxed text-ink/70">
-              A tight, intentional menu — each protocol refined over thousands of
-              treatments. Everything below is physician-led and delivered in-house.
+              A tight, intentional menu — each protocol refined over thousands
+              of treatments. Everything below is physician-led and delivered
+              in-house.
             </p>
             <Link
               href="/consultation"
@@ -39,7 +46,7 @@ export default function Services() {
               >
                 <div className="flex items-start justify-between">
                   <span className="eyebrow text-ink/40">{s.no}</span>
-                  <span className="eyebrow text-ink/40">{s.time}</span>
+                  <span className="eyebrow text-ink/40">{s.modality}</span>
                 </div>
 
                 <div className="relative aspect-[4/3] w-full my-5 overflow-hidden">
@@ -71,7 +78,7 @@ export default function Services() {
                     ))}
                   </div>
                   <div className="mt-6 flex items-center justify-between">
-                    <span className="eyebrow text-ink/60">{s.time}</span>
+                    <span className="eyebrow text-ink/60">{s.modality}</span>
                     <span className="arrow-slide text-ink/70 text-lg">→</span>
                   </div>
                 </div>
