@@ -10,7 +10,8 @@ export default function Philosophy() {
           <Reveal>
             <p className="eyebrow text-ink/50 mb-4">§ 01 — Philosophy</p>
             <p className="display text-[28px] leading-tight text-ink/90">
-              A studio,<br />
+              A studio,
+              <br />
               not a factory.
             </p>
           </Reveal>
@@ -20,28 +21,33 @@ export default function Philosophy() {
         <div className="col-span-12 lg:col-span-6">
           <Reveal>
             <h2 className="display text-[8vw] lg:text-[5.2rem] leading-[0.95] tracking-tightest text-ink">
-              We treat the face like <span className="display-italic text-stone">architecture</span> —
+              We treat the face like{" "}
+              <span className="display-italic text-stone">architecture</span> —
               every proportion mapped, every angstrom of product earned.
             </h2>
           </Reveal>
           <Reveal delay={140}>
             <div className="mt-10 grid sm:grid-cols-2 gap-10 max-w-2xl text-[14px] leading-relaxed text-ink/75">
               <p>
-                Dermatix began as a reaction to the assembly-line medspa. Where others push
-                volume, we study proportion. Every consult is an hour minimum. Every plan is
-                drawn by hand over facial mapping before a single unit is mixed.
+                Dermatix began as a reaction to the assembly-line medspa. Where
+                others push volume, we study proportion. Every consult is an
+                hour minimum. Every plan is drawn by hand over facial mapping
+                before a single unit is mixed.
               </p>
               <p>
-                Our protocols are imported from European aesthetic medicine and edited for
-                Canadian climate and Canadian faces. The result is an outcome your friends will
-                notice but never place — the cleanest compliment in aesthetics.
+                Our protocols are imported from European aesthetic medicine and
+                edited for Canadian climate and Canadian faces. The result is an
+                outcome your friends will notice but never place — the cleanest
+                compliment in aesthetics.
               </p>
             </div>
           </Reveal>
           <Reveal delay={260}>
             <div className="mt-12 flex items-center gap-4">
               <span className="h-px w-16 bg-ink/30" />
-              <span className="eyebrow text-ink/60">Signature protocols · since 2012</span>
+              <span className="eyebrow text-ink/60">
+                Signature protocols · since 2020
+              </span>
             </div>
           </Reveal>
         </div>
@@ -65,8 +71,8 @@ export default function Philosophy() {
           </Reveal>
           <Reveal delay={180}>
             <p className="mt-4 text-[12px] text-ink/55 leading-relaxed">
-              Proportional mapping, performed at every new-patient consult. No two faces
-              receive the same plan.
+              Proportional mapping, performed at every new-patient consult. No
+              two faces receive the same plan.
             </p>
           </Reveal>
         </div>

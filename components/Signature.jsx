@@ -30,21 +30,28 @@ const featured = [
 
 export default function Signature() {
   return (
-    <section id="signature" className="relative py-28 lg:py-40 bg-ink text-bone overflow-hidden">
+    <section
+      id="signature"
+      className="relative py-28 lg:py-40 bg-ink text-bone overflow-hidden"
+    >
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-16 lg:mb-24">
           <Reveal>
-            <p className="eyebrow text-bone/50 mb-3">§ 03 — Signature Protocols</p>
+            <p className="eyebrow text-bone/50 mb-3">
+              § 03 — Signature Protocols
+            </p>
             <h2 className="display text-[10vw] lg:text-[7rem] leading-[0.92] tracking-tightest text-bone">
-              The house's <span className="display-italic text-champagne">quietest</span>
+              The house's{" "}
+              <span className="display-italic text-champagne">quietest</span>
               <br />
               greatest hits.
             </h2>
           </Reveal>
           <Reveal delay={120} className="max-w-sm">
             <p className="text-[14px] leading-relaxed text-bone/70">
-              Three protocols we've taught to every injector on the floor. Each one is the
-              answer to a question a patient asks at least three times a week.
+              Three protocols we've taught to every injector on the floor. Each
+              one is the answer to a question a patient asks at least three
+              times a week.
             </p>
           </Reveal>
         </div>
@@ -87,7 +94,9 @@ export default function Signature() {
                   {f.meta.map((m, j) => (
                     <span key={j} className="flex items-center gap-3">
                       {m}
-                      {j < f.meta.length - 1 && <span className="h-px w-4 bg-bone/30" />}
+                      {j < f.meta.length - 1 && (
+                        <span className="h-px w-4 bg-bone/30" />
+                      )}
                     </span>
                   ))}
                 </div>

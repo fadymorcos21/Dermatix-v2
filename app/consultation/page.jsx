@@ -7,7 +7,7 @@ import Reveal from "@/components/Reveal";
 export const metadata = {
   title: "Consultation · Dermatix Clinic Woodbridge",
   description:
-    "A new patient consultation at Dermatix — a 45-minute, physician-led conversation about your skin, your goals, and the right plan.",
+    "A new patient consultation at Dermatix - a 30-minute, physician-led conversation about your skin, your goals, and the right plan.",
 };
 
 const expectations = [
@@ -51,12 +51,12 @@ export default function ConsultationPage() {
               <span className="display-italic text-stone">comes first.</span>
             </h1>
             <p className="mt-6 max-w-xl text-[15px] lg:text-[16px] leading-relaxed text-ink/75">
-              A 45-minute, physician-led conversation about your skin, your goals and the
+              A 30-minute, physician-led conversation about your skin, your goals and the
               right protocol — or sequence of protocols — to get you there. We don't sell
               add-ons; we design plans.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-6 eyebrow text-ink/60">
-              <span>45 min</span>
+              <span>30 min</span>
               <span className="w-1 h-1 rounded-full bg-ink/30" />
               <span>Physician-led · By appointment</span>
             </div>
@@ -136,7 +136,7 @@ export default function ConsultationPage() {
               {[
                 "Come with a clean face if possible — makeup is fine, we'll cleanse.",
                 "Bring a list of any medications, supplements or recent treatments.",
-                "Allow 45 minutes. Plans take time, and you should feel unrushed.",
+                "Allow 30 minutes. Plans take time, and you should feel unrushed.",
                 "We accept all major credit cards. Treatment plans can be staged.",
                 "24-hour cancellation policy. We'll send a reminder the day before.",
               ].map((p, i) => (

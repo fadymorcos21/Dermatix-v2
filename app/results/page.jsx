@@ -16,7 +16,7 @@ const stats = [
   { n: "12k+", l: "Treatments delivered" },
   { n: "847", l: "Verified 5★ reviews" },
   { n: "98%", l: "Would refer a friend" },
-  { n: "2012", l: "Serving Woodbridge since" },
+  { n: "2020", l: "Serving Woodbridge since" },
 ];
 
 const quotes = [
@@ -81,7 +81,9 @@ export default function ResultsPage() {
               <span className="num text-[36px] lg:text-[44px] tracking-tight">
                 {s.n}
               </span>
-              <span className="text-[12px] text-ink/55 tracking-wide">{s.l}</span>
+              <span className="text-[12px] text-ink/55 tracking-wide">
+                {s.l}
+              </span>
             </div>
           ))}
         </div>
@@ -147,18 +149,23 @@ export default function ResultsPage() {
             <Reveal delay={140}>
               <h3 className="display text-[clamp(40px,5vw,72px)] leading-[0.98] tracking-tightest">
                 The slow miracle of{" "}
-                <span className="display-italic text-stone">doing less, well.</span>
+                <span className="display-italic text-stone">
+                  doing less, well.
+                </span>
               </h3>
               <p className="display mt-6 text-[20px] leading-[1.45] text-ink/75 max-w-[42ch]">
-                Twelve weeks of the Resurface Ritual, paired with a daily routine of
-                three actives. Photographed under the same daylight, at the same
-                time, in the same chair.
+                Twelve weeks of the Resurface Ritual, paired with a daily
+                routine of three actives. Photographed under the same daylight,
+                at the same time, in the same chair.
               </p>
 
               <div className="mt-8 grid grid-cols-3 border-t border-ink/15">
                 <div className="pt-5 pr-4">
                   <div className="display text-[44px] leading-none tracking-tight">
-                    94<span className="text-[22px] text-ink/55 align-top ml-1">%</span>
+                    94
+                    <span className="text-[22px] text-ink/55 align-top ml-1">
+                      %
+                    </span>
                   </div>
                   <div className="eyebrow text-ink/55 mt-2">
                     Reported smoother texture
@@ -166,7 +173,10 @@ export default function ResultsPage() {
                 </div>
                 <div className="pt-5 px-4 border-l border-ink/15">
                   <div className="display text-[44px] leading-none tracking-tight">
-                    2.8<span className="text-[22px] text-ink/55 align-top ml-1">×</span>
+                    2.8
+                    <span className="text-[22px] text-ink/55 align-top ml-1">
+                      ×
+                    </span>
                   </div>
                   <div className="eyebrow text-ink/55 mt-2">
                     Hyaluronic retention
@@ -174,7 +184,10 @@ export default function ResultsPage() {
                 </div>
                 <div className="pt-5 pl-4 border-l border-ink/15">
                   <div className="display text-[44px] leading-none tracking-tight">
-                    12<span className="text-[22px] text-ink/55 align-top ml-1">wk</span>
+                    12
+                    <span className="text-[22px] text-ink/55 align-top ml-1">
+                      wk
+                    </span>
                   </div>
                   <div className="eyebrow text-ink/55 mt-2">
                     Avg. visible result
@@ -203,12 +216,13 @@ export default function ResultsPage() {
             <Reveal>
               <p className="eyebrow text-ink/50 mb-3">§ Selected work</p>
               <h2 className="display text-[42px] lg:text-[64px] leading-tight tracking-tightest max-w-3xl">
-                A small <span className="display-italic text-stone">window.</span>
+                A small{" "}
+                <span className="display-italic text-stone">window.</span>
               </h2>
             </Reveal>
             <p className="max-w-sm text-[13px] text-ink/65 leading-relaxed">
-              Full before-and-after gallery shared in clinic with patient consent.
-              Reach out for relevant cases to your concern.
+              Full before-and-after gallery shared in clinic with patient
+              consent. Reach out for relevant cases to your concern.
             </p>
           </div>
 

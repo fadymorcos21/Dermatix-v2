@@ -27,13 +27,16 @@ export const metadata = {
   title: "Dermatix — Medical Aesthetics. Woodbridge.",
   description:
     "A quiet studio for the obsessively subtle: Botox, filler, HIFU, PRP, Hydrafacial and more. Woodbridge, Ontario.",
-  themeColor: "#f6f1e7",
   openGraph: {
     title: "Dermatix — Medical Aesthetics",
     description:
       "Board-certified medical aesthetics in Woodbridge, ON. Considered, editorial, undetectable.",
     type: "website",
   },
+};
+
+export const viewport = {
+  themeColor: "#f6f1e7",
 };
 
 export default function RootLayout({ children }) {

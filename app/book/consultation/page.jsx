@@ -6,7 +6,7 @@ import ConsultationForm from "@/components/ConsultationForm";
 export const metadata = {
   title: "Book a Consultation · Dermatix Clinic Woodbridge",
   description:
-    "Request a new patient consultation at Dermatix Clinic, Woodbridge. A 45-minute, physician-led conversation about your skin and goals.",
+    "Book a confirmed 30-minute new patient consultation at Dermatix Clinic, Woodbridge.",
 };
 
 export default function BookConsultationPage() {
@@ -26,9 +26,9 @@ export default function BookConsultationPage() {
               <span className="display-italic text-stone">a plan.</span>
             </h1>
             <p className="mt-6 max-w-md text-[15px] lg:text-[16px] leading-relaxed text-ink/75">
-              A 45-minute, physician-led conversation about your skin, your goals, and
-              the right protocol — or sequence of protocols — to get you there. No
-              treatment on the day. No pressure.
+              A 30-minute, physician-led conversation about your skin, your
+              goals, and the right protocol — or sequence of protocols — to get
+              you there. No treatment on the day. No pressure.
             </p>
 
             <div className="mt-8 border border-ink/15 p-5 bg-bone/50 max-w-md">
@@ -50,7 +50,9 @@ export default function BookConsultationPage() {
             </div>
 
             <div className="mt-10 border-t border-ink/10 pt-6">
-              <p className="eyebrow text-ink/50 mb-3">Already know what you want?</p>
+              <p className="eyebrow text-ink/50 mb-3">
+                Already know what you want?
+              </p>
               <Link
                 href="/book"
                 className="group inline-flex items-center gap-2 text-[13px] editorial-link"
@@ -68,7 +70,10 @@ export default function BookConsultationPage() {
                 </a>
               </p>
               <p>
-                <a href="mailto:clinic@dermatixclinic.com" className="editorial-link">
+                <a
+                  href="mailto:clinic@dermatixclinic.com"
+                  className="editorial-link"
+                >
                   clinic@dermatixclinic.com
                 </a>
               </p>

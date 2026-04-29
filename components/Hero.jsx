@@ -10,6 +10,7 @@ export default function Hero() {
       {/* Full-bleed background image */}
       <div className="absolute inset-0">
         <Image
+          // src="/images/hero-option-2.png"
           src="/images/landing-hero-background.jpg"
           alt="Dermatix patient portrait"
           fill
@@ -17,10 +18,10 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover object-[70%_top] lg:object-[65%_top]"
         />
-        {/* Subtle warm wash on the left to keep type legible without flattening the photo */}
+        {/* Light warm wash on the left to brighten the text area, dies off well before the model */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-[rgba(150,128,108,0.55)] via-[rgba(150,128,108,0.22)] to-transparent lg:from-[rgba(150,128,108,0.5)] lg:via-[rgba(150,128,108,0.15)]"
+          className="absolute inset-0 bg-[linear-gradient(to_right,rgba(248,236,222,0.7)_0%,rgba(248,236,222,0.65)_38%,rgba(248,236,222,0.2)_46%,transparent_52%)] lg:bg-[linear-gradient(to_right,rgba(248,236,222,0.65)_0%,rgba(248,236,222,0.6)_40%,rgba(248,236,222,0.18)_48%,transparent_54%)]"
         />
         {/* Soft top fade so the nav reads cleanly */}
         <div

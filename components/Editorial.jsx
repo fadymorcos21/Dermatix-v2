@@ -25,8 +25,12 @@ export default function Editorial() {
 
           <Reveal className="max-w-4xl">
             <p className="display text-bone text-[9vw] lg:text-[6rem] leading-[0.98] tracking-tightest">
-              "The best aesthetic work is the work you never notice — it's the confidence
-              that walks into a room <span className="display-italic text-champagne">a half-second before the face does.</span>"
+              "The best aesthetic work is the work you never notice — it's the
+              confidence that walks into a room{" "}
+              <span className="display-italic text-champagne">
+                a half-second before the face does.
+              </span>
+              "
             </p>
             <div className="mt-10 flex items-center gap-4 text-bone/80 text-[13px] tracking-wide">
               <span className="h-px w-10 bg-bone/60" />
@@ -38,7 +42,9 @@ export default function Editorial() {
 
           <div className="flex items-end justify-between eyebrow text-bone/60">
             <span>Photographed on 120 film · no retouching</span>
-            <span className="hidden sm:inline">Dermatix · established 2012</span>
+            <span className="hidden sm:inline">
+              Dermatix · established 2020
+            </span>
           </div>
         </div>
       </div>

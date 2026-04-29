@@ -7,7 +7,7 @@ import { getServiceBySlug } from "@/lib/services";
 export const metadata = {
   title: "Book an Appointment · Dermatix Clinic Woodbridge",
   description:
-    "Request a service appointment at Dermatix Clinic, Woodbridge. We'll confirm within one business day.",
+    "Book a confirmed 30-minute service appointment at Dermatix Clinic, Woodbridge.",
 };
 
 export default function BookPage({ searchParams }) {
@@ -31,8 +31,8 @@ export default function BookPage({ searchParams }) {
             </h1>
             <p className="mt-6 max-w-md text-[15px] lg:text-[16px] leading-relaxed text-ink/75">
               {service
-                ? `You're requesting a ${service.name} appointment. Choose a date that works and we'll confirm within one business day.`
-                : "For existing patients, or anyone who already knows the treatment they want. Choose a service, pick a time, and we'll confirm shortly."}
+                ? `You're booking a confirmed 30-minute ${service.name} appointment. Choose the date and time that works for you.`
+                : "For existing patients, or anyone who already knows the treatment they want. Choose a service, date, and time to confirm your 30-minute booking."}
             </p>
 
             {service && (

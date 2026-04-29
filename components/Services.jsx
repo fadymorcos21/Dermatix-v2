@@ -25,7 +25,7 @@ export default function Services() {
               href="/consultation"
               className="mt-5 inline-flex items-center gap-2 text-[12px] tracking-wider2 uppercase editorial-link"
             >
-              Request a consult <span className="arrow-slide">→</span>
+              Book consult <span className="arrow-slide">→</span>
             </Link>
           </Reveal>
         </div>

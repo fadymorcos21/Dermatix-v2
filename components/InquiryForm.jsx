@@ -9,13 +9,14 @@ export default function InquiryForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const form = e.currentTarget;
     setPending(true);
     setResult(null);
-    const fd = new FormData(e.currentTarget);
+    const fd = new FormData(form);
     const r = await submitInquiry(fd);
     setResult(r);
     setPending(false);
-    if (r?.ok) e.currentTarget.reset();
+    if (r?.ok) form.reset();
   }
 
   if (result?.ok) {
