@@ -1,6 +1,8 @@
 "use server";
 
 import { getServiceBySlug } from "@/lib/services";
+import { validateBooking, hasOverlap } from "@/lib/booking-rules";
+import { listBookingsForDate, createBooking } from "@/lib/bookings-db";
 
 const defaultStaffEmail = "clinic@dermatixclinic.ca";
 const defaultFromEmail = "Dermatix Clinic <noreply@dermatixclinic.ca>";
@@ -154,6 +156,10 @@ function emailShell(content) {
   `;
 }
 
+function durationLabel(minutes) {
+  return `${minutes || 30} minutes`;
+}
+
 function staffBookingEmail(payload) {
   const typeLabel =
     payload.type === "consultation"
@@ -163,6 +169,7 @@ function staffBookingEmail(payload) {
   const title = `New ${typeLabel} from ${payload.name || "a website visitor"}`;
   const date = formatDate(payload.preferredDate);
   const time = formatTime(payload.preferredTime);
+  const duration = durationLabel(payload.durationMinutes);
 
   return {
     subject: `[Dermatix] ${title}`,
@@ -176,7 +183,8 @@ function staffBookingEmail(payload) {
       `Phone: ${payload.phone}`,
       `Booking date: ${labelValue(date)}`,
       `Booking time: ${labelValue(time)}`,
-      "Duration: 30 minutes",
+      `Duration: ${duration}`,
+      `Booking ID: ${labelValue(payload.bookingId)}`,
       `Notes: ${labelValue(payload.notes)}`,
       `Submitted: ${payload.submittedAt}`,
     ].join("\n"),
@@ -192,7 +200,8 @@ function staffBookingEmail(payload) {
         ["Phone", payload.phone],
         ["Booking date", date],
         ["Booking time", time],
-        ["Duration", "30 minutes"],
+        ["Duration", duration],
+        ["Booking ID", payload.bookingId],
         ["Notes", payload.notes],
         ["Submitted", payload.submittedAt],
       ])}
@@ -203,9 +212,10 @@ function staffBookingEmail(payload) {
 function customerBookingEmail(payload) {
   const isConsultation = payload.type === "consultation";
   const service = formatService(payload.service);
+  const duration = durationLabel(payload.durationMinutes);
   const heading = isConsultation
-    ? "Your 30-minute consultation booking is confirmed."
-    : "Your 30-minute appointment booking is confirmed.";
+    ? `Your ${duration} consultation booking is confirmed.`
+    : `Your ${duration} appointment booking is confirmed.`;
   const date = formatDate(payload.preferredDate);
   const time = formatTime(payload.preferredTime);
 
@@ -222,7 +232,7 @@ function customerBookingEmail(payload) {
       `Service: ${service}`,
       `Booking date: ${labelValue(date)}`,
       `Booking time: ${labelValue(time)}`,
-      "Duration: 30 minutes",
+      `Duration: ${duration}`,
       "",
       "Dermatix Clinic",
       "1-905-605-8444",
@@ -239,7 +249,7 @@ function customerBookingEmail(payload) {
         ["Service", service],
         ["Booking date", date],
         ["Booking time", time],
-        ["Duration", "30 minutes"],
+        ["Duration", duration],
       ])}
       <p style="margin:20px 0 0;color:#514c45;font-size:14px;line-height:1.6;">Dermatix Clinic<br />1-905-605-8444<br />110 Ansley Grove Rd #10, Woodbridge, ON L4L 3R1</p>
     `),
@@ -380,8 +390,81 @@ export async function submitBooking(formData) {
     submittedAt: new Date().toISOString(),
   };
 
-  console.log("[Dermatix confirmed booking]", payload);
+  // 1. Validate against time/date rules (clinic hours, intervals, no-past).
+  const validation = validateBooking({
+    date: payload.preferredDate,
+    time: payload.preferredTime,
+    type: payload.type,
+    service: payload.service,
+  });
 
+  if (!validation.ok) {
+    return { ok: false, message: validation.message };
+  }
+
+  payload.durationMinutes = validation.durationMinutes;
+
+  // 2. Read existing bookings for the day and re-check overlap server-side.
+  //    (The form already filters available times, but a slot can be taken
+  //    between page render and submit.)
+  let existing = [];
+  try {
+    existing = await listBookingsForDate(payload.preferredDate);
+  } catch (err) {
+    console.error("[submitBooking] availability read failed", err);
+    return {
+      ok: false,
+      message:
+        "Booking system is temporarily unavailable. Please try again or call 1-905-605-8444.",
+    };
+  }
+
+  if (
+    hasOverlap(validation.startMinutes, validation.endMinutes, existing)
+  ) {
+    return { ok: false, message: "This time is no longer available." };
+  }
+
+  // 3. Save the booking. Conditional put rejects exact-start collisions.
+  let saved;
+  try {
+    saved = await createBooking({
+      date: payload.preferredDate,
+      startMinutes: validation.startMinutes,
+      endMinutes: validation.endMinutes,
+      durationMinutes: validation.durationMinutes,
+      type: payload.type,
+      service: payload.service,
+      name: payload.name,
+      email: payload.email,
+      phone: payload.phone,
+      notes: payload.notes,
+      submittedAt: payload.submittedAt,
+    });
+  } catch (err) {
+    if (err?.code === "SLOT_TAKEN") {
+      return { ok: false, message: "This time is no longer available." };
+    }
+    console.error("[submitBooking] save failed", err);
+    return {
+      ok: false,
+      message:
+        "Could not save your booking. Please try again or call 1-905-605-8444.",
+    };
+  }
+
+  payload.bookingId = saved.bookingId;
+
+  console.log("[Dermatix confirmed booking]", {
+    bookingId: payload.bookingId,
+    date: payload.preferredDate,
+    time: payload.preferredTime,
+    type: payload.type,
+    service: payload.service,
+  });
+
+  // 4. Send emails. If sending fails the booking is still saved; surface a
+  //    friendly message so the customer knows the slot is held.
   try {
     await sendSubmissionEmails({
       staffEmail: staffBookingEmail(payload),
@@ -391,17 +474,16 @@ export async function submitBooking(formData) {
     });
   } catch (error) {
     console.error("[Dermatix booking email failed]", error);
-
     return {
-      ok: false,
-      message: "Something went wrong. Please try again or call 1-905-605-8444.",
+      ok: true,
+      message:
+        "Your booking is confirmed, but the confirmation email is delayed. The team has your appointment — please call 1-905-605-8444 if you need to verify.",
     };
   }
 
   return {
     ok: true,
-    message:
-      "Thank you - your 30-minute booking is confirmed. A confirmation email is on its way.",
+    message: `Thank you - your ${validation.durationMinutes}-minute booking is confirmed. A confirmation email is on its way.`,
   };
 }
 

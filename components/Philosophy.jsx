@@ -50,87 +50,56 @@ const features = [
     body: "Evidence-based treatments delivered with precision.",
     icon: (
       <svg
-        viewBox="0 0 64 64"
+        viewBox="0 0 64 72"
         fill="none"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        {/* top cap */}
-        <circle cx="32" cy="7.5" r="2.2" />
+        {/* ear tips */}
+        <g fill="currentColor">
+          <rect x="14.5" y="5" width="6.2" height="4.1" rx="2.05" />
+          <rect x="43.3" y="5" width="6.2" height="4.1" rx="2.05" />
+        </g>
 
-        {/* staff */}
-        <path d="M32 10 V57" />
+        {/* tubing + body */}
+        <g
+          stroke="currentColor"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* upper stethoscope */}
+          <path
+            d="M17.6 9.2
+         C14.2 14 13.3 21.2 14.8 27.2
+         C16.4 33.3 20 37.3 23.3 38.3
+         C26.7 39.2 29.8 37.9 31.8 34.8
+         C33.8 37.9 36.9 39.2 40.3 38.3
+         C43.6 37.3 47.2 33.3 48.8 27.2
+         C50.3 21.2 49.4 14 46 9.2"
+          />
 
-        {/* subtle base */}
-        <path d="M29.8 57 H34.2" />
+          {/* center join */}
+          <path d="M32 34.8 V41.2" />
 
-        {/* snake body - upper wrap */}
-        <path
-          d="
-    M38.6 14.8
-    C36.8 13.5, 34.6 12.9, 32.2 12.9
-    C27.8 12.9, 24.2 15.3, 23.1 18.7
-    C22.2 21.3, 23.1 23.8, 25.2 25.2
-    C27.2 26.5, 29.6 27.1, 32.4 27.3
-    C35.3 27.5, 37.8 28.1, 39.6 29.4
-    C41.5 30.8, 42.4 32.8, 42.2 35
-    C42 37.4, 40.6 39.6, 38.5 41
-    C36.4 42.5, 33.8 43.3, 30.9 43.1
-    C27.8 42.9, 25.1 41.4, 23.3 39
-  "
-        />
+          {/* lower tube */}
+          <path
+            d="M32 41.2
+         C31.7 47.7 32.7 54.1 35.2 58.7
+         C37.6 63.1 41.7 65.8 46 66
+         C50.8 66.2 54.8 63.5 56.3 58.9
+         C57.5 55.1 56.9 51.4 55.1 48.3"
+          />
 
-        {/* snake body - lower continuation */}
-        <path
-          d="
-    M23.3 39
-    C21.9 37.2, 21.2 35.1, 21.4 32.9
-    C21.7 29.7, 23.8 27, 27.1 25.7
-    C29.5 24.7, 32.1 24.5, 34.8 24.7
-    C38.3 25, 41.3 26, 43.6 27.8
-    C46.1 29.8, 47.4 32.7, 47.2 36
-    C47 39.4, 45.2 42.5, 42.2 44.9
-    C39.2 47.3, 35.4 48.7, 31.3 48.8
-    C27.2 48.9, 23.6 47.7, 20.9 45.4
-  "
-        />
+          {/* chestpiece stem */}
+          <path d="M55.1 48.3 C54.6 47.3 54.3 46.4 54.3 45.5" />
+        </g>
 
-        {/* tail */}
-        <path
-          d="
-    M20.9 45.4
-    C19.6 44.2, 18.7 42.8, 18.2 41.4
-    C17.6 39.6, 17.6 37.7, 18.2 36.1
-  "
-        />
-
-        {/* head */}
-        <path
-          d="
-    M38.6 14.8
-    C40.2 13.6, 42.4 13.5, 44.1 14.4
-    C45.8 15.2, 46.9 16.9, 47 18.8
-    C47.1 20.7, 46.3 22.4, 44.9 23.5
-    C43.5 24.6, 41.6 25, 39.8 24.5
-    C38.1 24.1, 36.7 22.8, 36.1 21.1
-    C35.5 19.3, 35.7 17.2, 36.9 15.8
-    C37.3 15.4, 37.9 15, 38.6 14.8
-    Z
-  "
-        />
-
-        {/* jaw line */}
-        <path d="M38.3 21.8 C40 22.6, 42.2 22.6, 44 21.6" />
-
-        {/* eye */}
-        <circle cx="42.4" cy="17.8" r="0.7" fill="currentColor" stroke="none" />
-
-        {/* tongue */}
-        <path d="M47 19.1 L49.4 18.2" />
-        <path d="M47 19.1 L49.3 20.1" />
+        {/* diaphragm */}
+        <g stroke="currentColor" strokeWidth="2.8" fill="none">
+          <circle cx="54.3" cy="45.5" r="4.4" />
+          <circle cx="54.3" cy="45.5" r="1.6" />
+        </g>
       </svg>
     ),
   },

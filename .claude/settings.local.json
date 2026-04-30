@@ -6,7 +6,8 @@
       "PowerShell(npm run build 2>&1)",
       "Bash(unzip -p \"Dermatix Notes Updated.docx\" word/document.xml)",
       "Read(//tmp/**)",
-      "PowerShell($f = \"C:\\\\Users\\\\Fady Morcos\\\\Documents\\\\Claude\\\\Projects\\\\Dermatix\\\\public\\\\images\\\\section-04-consult.png\"; Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\($f\\); \"$\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\))"
+      "PowerShell($f = \"C:\\\\Users\\\\Fady Morcos\\\\Documents\\\\Claude\\\\Projects\\\\Dermatix\\\\public\\\\images\\\\section-04-consult.png\"; Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\($f\\); \"$\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\))",
+      "Bash(git check-ignore *)"
     ]
   }
 }

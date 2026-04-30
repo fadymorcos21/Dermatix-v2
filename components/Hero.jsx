@@ -44,7 +44,33 @@ export default function Hero() {
               className="block animate-fade-up"
               style={{ animationDelay: "200ms" }}
             >
+              Your
+            </span>
+            <span
+              className="block  animate-fade-up"
+              style={{ animationDelay: "420ms" }}
+            >
               Glow Up
+            </span>
+            <span
+              className="block animate-fade-up"
+              style={{ animationDelay: "640ms" }}
+            >
+              Starts at
+            </span>
+            <span
+              className="block  animate-fade-up"
+              style={{ animationDelay: "860ms" }}
+            >
+              Dermatix
+            </span>
+          </h1>
+          {/* <h1 className="display text-ink text-[9vw] sm:text-[7vw] lg:text-[5.4rem] xl:text-[6rem] leading-[0.95] tracking-tightest">
+            <span
+              className="block animate-fade-up"
+              style={{ animationDelay: "200ms" }}
+            >
+              Your
             </span>
             <span
               className="block display-italic text-stone animate-fade-up"
@@ -64,7 +90,7 @@ export default function Hero() {
             >
               Dermatix
             </span>
-          </h1>
+          </h1> */}
           <p
             className="mt-6 text-[14px] lg:text-[15px] leading-relaxed text-ink/80 max-w-sm animate-fade-up"
             style={{ animationDelay: "1100ms" }}
