@@ -24,9 +24,9 @@ export default function Services() {
           </Reveal>
           <Reveal delay={140} className="max-w-sm">
             <p className="text-[14px] leading-relaxed text-ink/70">
-              A tight, intentional menu — each protocol refined over thousands
-              of treatments. Everything below is physician-led and delivered
-              in-house.
+              A considered menu of injectables, skin treatments, laser, body
+              contouring, and intimate wellness. Each service page now gives you
+              the useful questions before the consult.
             </p>
             <Link
               href="/consultation"

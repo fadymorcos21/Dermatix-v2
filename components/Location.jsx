@@ -2,7 +2,7 @@ import Image from "next/image";
 import Reveal from "./Reveal";
 
 export default function Location() {
-  const address = "10 - 110 Ansley Grove Rd, Woodbridge, ON L4L 3R1";
+  const address = "Dermatix Clinic, 110 Ansley Grove Rd #10, Woodbridge, ON L4L 3R1";
   const mapsQuery = encodeURIComponent(address);
   const embed = `https://www.google.com/maps?q=${mapsQuery}&z=15&output=embed`;
 
@@ -32,7 +32,7 @@ export default function Location() {
               <div>
                 <dt className="eyebrow text-ink/50 mb-2">Address</dt>
                 <dd className="leading-relaxed">
-                  10 – 110 Ansley Grove Rd.
+                  110 Ansley Grove Rd #10
                   <br />
                   Woodbridge, ON L4L 3R1
                 </dd>

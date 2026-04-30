@@ -59,7 +59,7 @@ export default function Footer() {
         <div className="col-span-12 lg:col-span-3">
           <p className="eyebrow text-ink/50 mb-4">Contact</p>
           <ul className="space-y-2 text-[13px]">
-            <li>10 – 110 Ansley Grove Rd.</li>
+            <li>110 Ansley Grove Rd #10</li>
             <li>Woodbridge, ON L4L 3R1</li>
             <li>
               <a href="tel:19056058444" className="editorial-link">

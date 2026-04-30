@@ -32,7 +32,7 @@ export default function ContactPage() {
               <div>
                 <p className="eyebrow text-ink/50 mb-2">Studio</p>
                 <p className="text-[14px] text-ink/85 leading-relaxed">
-                  10 – 110 Ansley Grove Rd.
+                  110 Ansley Grove Rd #10
                   <br />
                   Woodbridge, ON L4L 3R1
                 </p>
@@ -94,7 +94,7 @@ export default function ContactPage() {
         <div className="w-full h-[420px] lg:h-[520px] relative border-y border-ink/10">
           <iframe
             title="Dermatix Clinic location"
-            src="https://www.google.com/maps?q=10+Ansley+Grove+Rd+Woodbridge+ON+L4L+3R1&output=embed"
+            src="https://www.google.com/maps?q=Dermatix+Clinic+110+Ansley+Grove+Rd+%2310+Woodbridge+ON+L4L+3R1&z=17&output=embed"
             className="absolute inset-0 w-full h-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

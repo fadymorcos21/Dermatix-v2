@@ -36,7 +36,7 @@ export default function BookConsultationPage() {
               <ul className="space-y-2 text-[14px] text-ink/80 mt-3">
                 <li className="flex items-start gap-3">
                   <span className="eyebrow text-ink/40 pt-1">01</span>
-                  <span>A photo-documented skin assessment</span>
+                  <span>A focused review of your concerns and treatment goals</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="eyebrow text-ink/40 pt-1">02</span>
@@ -60,23 +60,6 @@ export default function BookConsultationPage() {
                 Book a service appointment instead
                 <span className="arrow-slide">→</span>
               </Link>
-            </div>
-
-            <div className="mt-8 border-t border-ink/10 pt-6 text-[13px] text-ink/65 space-y-2">
-              <p>10 – 110 Ansley Grove Rd, Woodbridge, ON L4L 3R1</p>
-              <p>
-                <a href="tel:19056058444" className="editorial-link">
-                  1·905·605·8444
-                </a>
-              </p>
-              <p>
-                <a
-                  href="mailto:clinic@dermatixclinic.com"
-                  className="editorial-link"
-                >
-                  clinic@dermatixclinic.com
-                </a>
-              </p>
             </div>
           </div>
 

@@ -226,7 +226,7 @@ function customerBookingEmail(payload) {
       "",
       "Dermatix Clinic",
       "1-905-605-8444",
-      "10 - 110 Ansley Grove Rd, Woodbridge, ON L4L 3R1",
+      "110 Ansley Grove Rd #10, Woodbridge, ON L4L 3R1",
     ].join("\n"),
     html: emailShell(`
       <h1 style="margin:0;color:#24221f;font-family:Georgia,serif;font-weight:400;font-size:30px;line-height:1.15;">${escapeHtml(
@@ -241,7 +241,7 @@ function customerBookingEmail(payload) {
         ["Booking time", time],
         ["Duration", "30 minutes"],
       ])}
-      <p style="margin:20px 0 0;color:#514c45;font-size:14px;line-height:1.6;">Dermatix Clinic<br />1-905-605-8444<br />10 - 110 Ansley Grove Rd, Woodbridge, ON L4L 3R1</p>
+      <p style="margin:20px 0 0;color:#514c45;font-size:14px;line-height:1.6;">Dermatix Clinic<br />1-905-605-8444<br />110 Ansley Grove Rd #10, Woodbridge, ON L4L 3R1</p>
     `),
   };
 }
@@ -290,7 +290,7 @@ function customerInquiryEmail(payload) {
       "",
       "Dermatix Clinic",
       "1-905-605-8444",
-      "10 - 110 Ansley Grove Rd, Woodbridge, ON L4L 3R1",
+      "110 Ansley Grove Rd #10, Woodbridge, ON L4L 3R1",
     ].join("\n"),
     html: emailShell(`
       <h1 style="margin:0;color:#24221f;font-family:Georgia,serif;font-weight:400;font-size:30px;line-height:1.15;">Thanks for reaching out.</h1>
@@ -298,7 +298,7 @@ function customerInquiryEmail(payload) {
         payload.name || "there",
       )}, we received your message and our team will write back within one business day.</p>
       ${detailsTable([["Subject", payload.subject]])}
-      <p style="margin:20px 0 0;color:#514c45;font-size:14px;line-height:1.6;">Dermatix Clinic<br />1-905-605-8444<br />10 - 110 Ansley Grove Rd, Woodbridge, ON L4L 3R1</p>
+      <p style="margin:20px 0 0;color:#514c45;font-size:14px;line-height:1.6;">Dermatix Clinic<br />1-905-605-8444<br />110 Ansley Grove Rd #10, Woodbridge, ON L4L 3R1</p>
     `),
   };
 }

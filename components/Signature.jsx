@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "./Reveal";
 
 const featured = [
@@ -6,25 +7,28 @@ const featured = [
     no: "S/01",
     title: "The Whisper Lip",
     caption:
-      "Hyaluronic filler in the under-dosed, hydration-first tradition. Restores border clarity and softens philtrum asymmetry without volume tells.",
-    img: "/images/botox-lip.jpg",
-    meta: ["45 min", "Hyaluronic acid", "12–16 mo result"],
+      "A dermal filler conversation for lips: shape, border, proportion and hydration, planned around the face you already have.",
+    img: "/images/serice-lip-filler-option.jpg",
+    meta: ["Dermal Filler", "Lips", "Proportion"],
+    href: "/services/dermal-filler",
   },
   {
     no: "S/02",
-    title: "The Editorial Brow",
+    title: "The Soft Reset",
     caption:
-      "Microdosed neuromodulator, placed against our proportional grid. Lifts the lateral brow by 1–2 millimetres — cinematic, never surgical.",
-    img: "/images/editorial-portrait.jpg",
-    meta: ["20 min", "Microdose", "3–4 mo result"],
+      "A neuromodulator treatment for expression lines, planned around movement rather than stillness.",
+    img: "/images/serice-botox.jpg",
+    meta: ["Injectable", "Expression", "Movement"],
+    href: "/services/botox",
   },
   {
     no: "S/03",
-    title: "The HIFU Rebuild",
+    title: "The HIFU Lift",
     caption:
-      "High-intensity ultrasound re-scaffolds collagen in the lower face and neck. One appointment, twelve months of build, zero downtime.",
-    img: "/images/hifu-treatment.jpg",
-    meta: ["75 min", "Non-surgical", "12 mo build"],
+      "Focused ultrasound for selected lifting and tightening goals, with gradual collagen remodeling.",
+    img: "/images/service-7-skin-tightening.jpg",
+    meta: ["Ultrasound", "Tightening", "Collagen"],
+    href: "/services/hifu-skin-tightening",
   },
 ];
 
@@ -38,20 +42,20 @@ export default function Signature() {
         <div className="flex items-end justify-between flex-wrap gap-6 mb-16 lg:mb-24">
           <Reveal>
             <p className="eyebrow text-bone/50 mb-3">
-              § 03 — Signature Protocols
+              § 03 — Service Spotlight
             </p>
             <h2 className="display text-[10vw] lg:text-[7rem] leading-[0.92] tracking-tightest text-bone">
-              The house's{" "}
-              <span className="display-italic text-champagne">quietest</span>
+              Service{" "}
+              <span className="display-italic text-champagne">spotlight</span>
               <br />
-              greatest hits.
+              selections.
             </h2>
           </Reveal>
           <Reveal delay={120} className="max-w-sm">
             <p className="text-[14px] leading-relaxed text-bone/70">
-              Three protocols we've taught to every injector on the floor. Each
-              one is the answer to a question a patient asks at least three
-              times a week.
+              Three editorial starting points for common goals: subtle lip
+              structure, softer expression lines, and a non-surgical tightening
+              conversation.
             </p>
           </Reveal>
         </div>
@@ -59,7 +63,7 @@ export default function Signature() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
           {featured.map((f, i) => (
             <Reveal key={f.title} delay={i * 120}>
-              <article className="group">
+              <Link href={f.href} className="group block">
                 <div className="relative aspect-[3/4] overflow-hidden grain">
                   <Image
                     src={f.img}
@@ -92,7 +96,7 @@ export default function Signature() {
                 </p>
                 <div className="mt-5 flex items-center gap-3 text-[11px] tracking-wider2 uppercase text-bone/55">
                   {f.meta.map((m, j) => (
-                    <span key={j} className="flex items-center gap-3">
+                    <span key={m} className="flex items-center gap-3">
                       {m}
                       {j < f.meta.length - 1 && (
                         <span className="h-px w-4 bg-bone/30" />
@@ -100,12 +104,11 @@ export default function Signature() {
                     </span>
                   ))}
                 </div>
-              </article>
+              </Link>
             </Reveal>
           ))}
         </div>
 
-        {/* Decorative bottom type */}
         <Reveal>
           <p className="mt-20 lg:mt-28 display-italic text-bone/30 text-[8vw] lg:text-[6rem] leading-none">
             — noticed, never placed.

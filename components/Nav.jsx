@@ -24,6 +24,7 @@ export default function Nav() {
   }, [isHome]);
 
   const opaque = scrolled || !isHome;
+  const bookLabel = isHome ? "Book" : "Book appointment";
 
   function openServices() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -168,7 +169,7 @@ export default function Nav() {
             href="/book"
             className="group inline-flex items-center gap-2 rounded-full bg-ink text-bone px-5 py-2.5 text-[12px] tracking-wider2 uppercase hover:bg-moss transition-colors"
           >
-            Book
+            {bookLabel}
             <span className="arrow-slide">→</span>
           </Link>
         </div>

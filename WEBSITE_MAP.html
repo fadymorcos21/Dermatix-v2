@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dermatix Website Map</title>
+    <style>
+      :root {
+        --bone: #f7f2e8;
+        --cream: #ece3d2;
+        --ink: #17150f;
+        --muted: #6f665a;
+        --line: rgba(23, 21, 15, 0.16);
+        --soft-line: rgba(23, 21, 15, 0.08);
+        --char: #242019;
+        --gold: #b5986a;
+        --moss: #2f3a2e;
+        --rose: #8d504a;
+        --blue: #405b73;
+        --shadow: 0 24px 80px rgba(23, 21, 15, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bone);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+      }
+
+      .hero {
+        background:
+          linear-gradient(120deg, rgba(36, 32, 25, 0.96), rgba(47, 58, 46, 0.9)),
+          var(--char);
+        color: var(--bone);
+        padding: 58px 28px 38px;
+      }
+
+      .hero-inner,
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: rgba(247, 242, 232, 0.62);
+        font-size: 11px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 920px;
+        margin-bottom: 18px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 400;
+        font-size: clamp(48px, 9vw, 104px);
+        line-height: 0.96;
+        letter-spacing: -0.035em;
+      }
+
+      .lede {
+        max-width: 720px;
+        margin: 0;
+        color: rgba(247, 242, 232, 0.76);
+        font-size: 17px;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 7px 12px;
+        border: 1px solid rgba(247, 242, 232, 0.18);
+        border-radius: 999px;
+        color: rgba(247, 242, 232, 0.78);
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 242, 232, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav-inner {
+        display: flex;
+        gap: 10px;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 12px 28px;
+        overflow-x: auto;
+      }
+
+      .nav a {
+        flex: 0 0 auto;
+        padding: 8px 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 12px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .nav a:hover {
+        border-color: rgba(23, 21, 15, 0.42);
+        color: var(--ink);
+      }
+
+      section {
+        padding: 52px 28px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      section.alt {
+        background: var(--cream);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+        gap: 28px;
+        align-items: end;
+        margin-bottom: 26px;
+      }
+
+      .section-head h2 {
+        margin-bottom: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 400;
+        font-size: clamp(34px, 5vw, 62px);
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+      }
+
+      .section-head p {
+        margin-bottom: 0;
+        color: var(--muted);
+        max-width: 680px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .grid.cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid.cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.22);
+        padding: 18px;
+        min-height: 100%;
+        box-shadow: none;
+      }
+
+      .card.dark {
+        background: var(--char);
+        color: var(--bone);
+        border-color: rgba(247, 242, 232, 0.12);
+        box-shadow: var(--shadow);
+      }
+
+      .card h3 {
+        margin-bottom: 8px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 24px;
+        line-height: 1.05;
+        font-weight: 400;
+      }
+
+      .card p,
+      .card li {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .card.dark p,
+      .card.dark li {
+        color: rgba(247, 242, 232, 0.74);
+      }
+
+      .route-map {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .route-root {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 240px;
+        padding: 24px;
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: var(--bone);
+      }
+
+      .route-root span {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(247, 242, 232, 0.56);
+      }
+
+      .route-root strong {
+        margin-top: 10px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 70px;
+        line-height: 1;
+        font-weight: 400;
+      }
+
+      .route-groups {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .route-list {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+      }
+
+      .route-list li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 9px 0;
+        border-top: 1px solid var(--soft-line);
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 13px;
+      }
+
+      .route-label {
+        color: var(--muted);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        font-size: 12px;
+      }
+
+      .flow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .node {
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.22);
+        font-size: 13px;
+      }
+
+      .arrow {
+        color: var(--muted);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 900px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--soft-line);
+        border-right: 1px solid var(--soft-line);
+        padding: 11px 12px;
+        text-align: left;
+        vertical-align: top;
+        font-size: 13px;
+      }
+
+      th {
+        background: var(--cream);
+        color: var(--ink);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      th:first-child,
+      td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: var(--bone);
+        min-width: 210px;
+        box-shadow: 1px 0 0 var(--line);
+      }
+
+      th:first-child {
+        z-index: 2;
+        background: var(--cream);
+      }
+
+      .use {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        background: var(--moss);
+        color: var(--bone);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .maybe {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        background: var(--gold);
+        color: var(--ink);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .empty {
+        color: rgba(23, 21, 15, 0.22);
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .legend span {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .flag-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .flag {
+        border: 1px solid rgba(141, 80, 74, 0.28);
+        background: rgba(141, 80, 74, 0.08);
+        padding: 16px;
+      }
+
+      .flag strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--rose);
+      }
+
+      .flag span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 900px) {
+        .section-head,
+        .route-map,
+        .route-groups,
+        .grid.cols-3,
+        .grid.cols-4,
+        .flag-list {
+          grid-template-columns: 1fr;
+        }
+
+      }
+
+      @media print {
+        .nav {
+          display: none;
+        }
+
+        section,
+        .hero {
+          break-inside: avoid;
+          padding: 26px 0;
+        }
+
+        body {
+          background: white;
+        }
+
+        .wrap,
+        .hero-inner {
+          max-width: none;
+          padding: 0 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-inner">
+          <p class="eyebrow">Dermatix website review map</p>
+          <h1>Routes, components, reuse, and meeting flags.</h1>
+          <p class="lede">
+            A single-file visual map for reviewing the site with the client.
+            Last reviewed: 2026-04-29.
+          </p>
+          <div class="meta-row">
+            <span class="pill">18 public routes</span>
+            <span class="pill">10 service detail pages</span>
+            <span class="pill">8 reusable page components</span>
+            <span class="pill">3 form components</span>
+          </div>
+        </div>
+      </header>
+
+      <nav class="nav" aria-label="Page sections">
+        <div class="nav-inner">
+          <a href="#routes">Routes</a>
+          <a href="#pages">Pages</a>
+          <a href="#reuse">Component reuse</a>
+          <a href="#patterns">Similar patterns</a>
+          <a href="#data">Data/actions</a>
+          <a href="#nav-footer">Nav/footer</a>
+          <a href="#flags">Client flags</a>
+        </div>
+      </nav>
+
+      <section id="routes">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Route tree</h2>
+            <p>
+              This site uses the Next App Router. Service detail routes are
+              generated from `lib/services.js`, so adding or removing a service
+              there changes multiple parts of the site.
+            </p>
+          </div>
+
+          <div class="route-map">
+            <div class="route-root">
+              <span>Homepage</span>
+              <strong>/</strong>
+            </div>
+            <div class="route-groups">
+              <article class="card">
+                <h3>Service routes</h3>
+                <ul class="route-list">
+                  <li><span>/services</span><span class="route-label">Index</span></li>
+                  <li><span>/services/botox</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/dermal-filler</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/prp</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/dermal-peel</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/laser-hair-removal</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/cryolipolysis</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/hifu-skin-tightening</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/hifu-vaginal-tightening</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/hydrafacial</span><span class="route-label">Detail</span></li>
+                  <li><span>/services/dermabrasion</span><span class="route-label">Detail</span></li>
+                </ul>
+              </article>
+
+              <article class="card">
+                <h3>Main routes</h3>
+                <ul class="route-list">
+                  <li><span>/consultation</span><span class="route-label">Info</span></li>
+                  <li><span>/results</span><span class="route-label">Proof/reviews</span></li>
+                  <li><span>/contact</span><span class="route-label">Inquiry</span></li>
+                  <li><span>/book</span><span class="route-label">Appointment form</span></li>
+                  <li><span>/book/consultation</span><span class="route-label">Consult form</span></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pages" class="alt">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Pages at a glance</h2>
+            <p>
+              Each card shows what the page is for, which components it uses,
+              and the client review risk attached to that page.
+            </p>
+          </div>
+
+          <div class="grid cols-3">
+            <article class="card dark">
+              <h3>/</h3>
+              <p>Homepage. Uses Nav, Hero, Marquee, Philosophy, Services, Signature, Experience, Editorial, Testimonials, Location, CTA, Footer.</p>
+              <p><strong>Review:</strong> brand claims, credibility copy, Location `#book` anchor.</p>
+            </article>
+            <article class="card">
+              <h3>/services</h3>
+              <p>Service index. Uses Nav, PageHeader, Reveal, Footer, `services` data, image/link components.</p>
+              <p><strong>Links:</strong> every card goes to `/services/{slug}`.</p>
+            </article>
+            <article class="card">
+              <h3>/services/[slug]</h3>
+              <p>Service detail template. Uses Nav, Reveal, Footer, `services` data, related services, booking CTAs.</p>
+              <p><strong>Review:</strong> service wording and claims should be approved.</p>
+            </article>
+            <article class="card">
+              <h3>/consultation</h3>
+              <p>Consultation explainer page. Uses Nav, Reveal, Footer, image/link components.</p>
+              <p><strong>Review:</strong> physician-led, 30 min, photo documentation, cost ranges, cancellation policy.</p>
+            </article>
+            <article class="card">
+              <h3>/results</h3>
+              <p>Results, stats, quotes, before/after, gallery. Uses Nav, PageHeader, Reveal, BeforeAfter, Footer.</p>
+              <p><strong>Review:</strong> highest-risk claims page. Confirm every number, quote, and image claim.</p>
+            </article>
+            <article class="card">
+              <h3>/contact</h3>
+              <p>Contact info, InquiryForm, and embedded Google map. Uses Nav, InquiryForm, Footer.</p>
+              <p><strong>Review:</strong> one-business-day reply promise and hours.</p>
+            </article>
+            <article class="card">
+              <h3>/book</h3>
+              <p>Service appointment form. Uses Nav, BookingForm, Footer, service query validation.</p>
+              <p><strong>Review:</strong> confirmed 30-minute booking and no-charge copy.</p>
+            </article>
+            <article class="card">
+              <h3>/book/consultation</h3>
+              <p>Consultation booking form. Uses Nav, ConsultationForm, Footer.</p>
+              <p><strong>Review:</strong> 30-minute, no treatment same day, photo-documented assessment.</p>
+            </article>
+            <article class="card">
+              <h3>App shell</h3>
+              <p>`app/layout.jsx` sets fonts, metadata, and viewport color. Nav/Footer are page-level, not layout-level.</p>
+              <p><strong>Review:</strong> site metadata still has strong positioning claims.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="reuse">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Component reuse matrix</h2>
+            <p>
+              Filled circles mean the component is directly used on that route.
+              Gold circles mean the route has a similar hand-coded pattern
+              rather than the same component.
+            </p>
+          </div>
+
+          <p class="legend">
+            <span><span class="use">Y</span> Direct component use</span>
+            <span><span class="maybe">S</span> Similar pattern, separately coded</span>
+          </p>
+
+          <div class="table-wrap">
+            <table aria-label="Component reuse matrix">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>/</th>
+                  <th>/services</th>
+                  <th>/services/[slug]</th>
+                  <th>/consultation</th>
+                  <th>/results</th>
+                  <th>/contact</th>
+                  <th>/book</th>
+                  <th>/book/consultation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Nav</strong><br /><span class="small">Global header/dropdown</span></td>
+                  <td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Footer</strong><br /><span class="small">Global footer</span></td>
+                  <td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td>
+                </tr>
+                <tr>
+                  <td><strong>PageHeader</strong><br /><span class="small">Reusable route intro</span></td>
+                  <td class="empty">-</td><td><span class="use">Y</span></td><td class="empty">-</td><td class="empty">-</td><td><span class="use">Y</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>Reveal</strong><br /><span class="small">Scroll animation helper</span></td>
+                  <td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td><span class="use">Y</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>Hero</strong><br /><span class="small">Homepage hero only</span></td>
+                  <td><span class="use">Y</span></td><td class="empty">-</td><td><span class="maybe">S</span></td><td><span class="maybe">S</span></td><td class="empty">-</td><td><span class="maybe">S</span></td><td><span class="maybe">S</span></td><td><span class="maybe">S</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Services</strong><br /><span class="small">Homepage service cards</span></td>
+                  <td><span class="use">Y</span></td><td><span class="maybe">S</span></td><td><span class="maybe">S</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>Location</strong><br /><span class="small">Homepage location/map block</span></td>
+                  <td><span class="use">Y</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td><span class="maybe">S</span></td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>CTA</strong><br /><span class="small">Homepage CTA band</span></td>
+                  <td><span class="use">Y</span></td><td class="empty">-</td><td><span class="maybe">S</span></td><td><span class="maybe">S</span></td><td><span class="maybe">S</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>Testimonials</strong><br /><span class="small">Homepage quotes</span></td>
+                  <td><span class="use">Y</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td><span class="maybe">S</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>BeforeAfter</strong><br /><span class="small">Draggable image slider</span></td>
+                  <td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td><span class="use">Y</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>BookingForm</strong><br /><span class="small">Service appointment form</span></td>
+                  <td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td><span class="use">Y</span></td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>ConsultationForm</strong><br /><span class="small">Consultation booking form</span></td>
+                  <td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td><span class="use">Y</span></td>
+                </tr>
+                <tr>
+                  <td><strong>InquiryForm</strong><br /><span class="small">Contact form</span></td>
+                  <td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td><span class="use">Y</span></td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+                <tr>
+                  <td><strong>Home-only sections</strong><br /><span class="small">Marquee, Philosophy, Signature, Experience, Editorial</span></td>
+                  <td><span class="use">Y</span></td><td class="empty">-</td><td><span class="maybe">S</span></td><td><span class="maybe">S</span></td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="patterns" class="alt">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Similar patterns</h2>
+            <p>
+              These are not necessarily the same component, but they behave or
+              look similar. This is the part that was hard to follow in the
+              Markdown map.
+            </p>
+          </div>
+
+          <div class="grid cols-3">
+            <article class="card">
+              <h3>Large hero systems</h3>
+              <p>`Hero` is reused only on `/`, but similar hero layouts are hand-coded on `/consultation`, `/services/[slug]`, `/contact`, `/book`, and `/book/consultation`.</p>
+            </article>
+            <article class="card">
+              <h3>Service card systems</h3>
+              <p>Service cards exist in `components/Services.jsx`, `/services/page.jsx`, and the related-services section of `/services/[slug]`.</p>
+            </article>
+            <article class="card">
+              <h3>CTA bands</h3>
+              <p>`CTA` is homepage-only. Dark CTA bands are separately coded in `/consultation`, `/results`, and `/services/[slug]`.</p>
+            </article>
+            <article class="card">
+              <h3>Protocol cards</h3>
+              <p>Card grids appear in `Experience`, `/consultation`, and `/services/[slug]`; each uses local or service-specific data.</p>
+            </article>
+            <article class="card">
+              <h3>Contact/map blocks</h3>
+              <p>`Location` appears on `/`. `/contact` separately codes the contact details, inquiry form, and Google map iframe.</p>
+            </article>
+            <article class="card">
+              <h3>Testimonials/quotes</h3>
+              <p>`Testimonials` appears on `/`. `/results` has its own local quote array and stats, not the same component.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="data">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Data and actions</h2>
+            <p>
+              This shows where shared data and server actions flow. The service
+              data is the main reuse driver across the site.
+            </p>
+          </div>
+
+          <div class="grid cols-3">
+            <article class="card dark">
+              <h3>lib/services.js</h3>
+              <p>Used by Nav, homepage Services, services index, service details, BookingForm, `/book`, and `app/actions.js`.</p>
+              <p>Fields: no, slug, name, blurb, summary, time, modality, img, tags, facts, story, goodFor, boundaries, process, faqs.</p>
+            </article>
+            <article class="card">
+              <h3>submitBooking</h3>
+              <p>Server action in `app/actions.js`. Called by `BookingForm` and `ConsultationForm`.</p>
+              <div class="flow" aria-label="Booking flow">
+                <span class="node">Form</span><span class="arrow">&rarr;</span><span class="node">submitBooking</span><span class="arrow">&rarr;</span><span class="node">email/logging</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>submitInquiry</h3>
+              <p>Server action in `app/actions.js`. Called by `InquiryForm` on `/contact`.</p>
+              <div class="flow" aria-label="Inquiry flow">
+                <span class="node">InquiryForm</span><span class="arrow">&rarr;</span><span class="node">submitInquiry</span><span class="arrow">&rarr;</span><span class="node">email/logging</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="nav-footer" class="alt">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Nav and footer</h2>
+            <p>
+              These are the most global pieces. If the client changes core
+              navigation, this is where the work starts.
+            </p>
+          </div>
+
+          <div class="grid cols-3">
+            <article class="card">
+              <h3>Main nav</h3>
+              <ul class="route-list">
+                <li><span>Logo</span><span>/</span></li>
+                <li><span>Services</span><span>/services</span></li>
+                <li><span>Dropdown</span><span>/services/{slug}</span></li>
+                <li><span>Consultation</span><span>/consultation</span></li>
+                <li><span>Results</span><span>/results</span></li>
+                <li><span>Contact</span><span>/contact</span></li>
+                <li><span>Book</span><span>/book</span></li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Footer nav</h3>
+              <ul class="route-list">
+                <li><span>Services</span><span>/services</span></li>
+                <li><span>Consultation</span><span>/consultation</span></li>
+                <li><span>Results</span><span>/results</span></li>
+                <li><span>Contact</span><span>/contact</span></li>
+                <li><span>Book</span><span>/book</span></li>
+                <li><span>Privacy/Terms/Instagram</span><span>#</span></li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Mobile note</h3>
+              <p>The desktop link group is hidden on small screens. The visible mobile header keeps the logo and Book button, but there is no full mobile menu yet.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="flags">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Client review flags</h2>
+            <p>
+              Use this as the meeting checklist. These are the areas most likely
+              to need approval, proof, or toned-down wording.
+            </p>
+          </div>
+
+          <ul class="flag-list">
+            <li class="flag"><strong>Results stats</strong><span>Confirm treatment count, review count, referral rate, and serving-since date.</span></li>
+            <li class="flag"><strong>Testimonials</strong><span>Confirm quotes, initials, treatment labels, patient consent, and whether they are real.</span></li>
+            <li class="flag"><strong>Before/after page</strong><span>Current before/after uses the same image. Clinical/photo-release claims need confirmation.</span></li>
+            <li class="flag"><strong>Provider claims</strong><span>Confirm "physician-led", "European-trained", and any provider-specific claims.</span></li>
+            <li class="flag"><strong>Booking promises</strong><span>Confirm 30-minute appointments, no charge until visit, no treatment on consultation day, and cancellation policy.</span></li>
+            <li class="flag"><strong>Hours and contact</strong><span>Hours appear in Footer, Contact, and Location. Confirm they match the clinic exactly.</span></li>
+            <li class="flag"><strong>Response time</strong><span>Contact page and form promise one-business-day response.</span></li>
+            <li class="flag"><strong>Placeholder links</strong><span>Privacy, Terms, and Instagram are currently `#` links.</span></li>
+            <li class="flag"><strong>Mobile navigation</strong><span>No full mobile menu exists yet; confirm if logo + Book button is enough.</span></li>
+            <li class="flag"><strong>Homepage anchor</strong><span>`Location` links to `#book`, but there is no matching `id="book"` element.</span></li>
+            <li class="flag"><strong>Service detail copy</strong><span>New service pages are educational and cautious, but the client should approve wording.</span></li>
+            <li class="flag"><strong>Metadata</strong><span>Some SEO metadata still contains strong positioning claims; review before launch.</span></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

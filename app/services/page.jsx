@@ -9,7 +9,7 @@ import { services } from "@/lib/services";
 export const metadata = {
   title: "Services · Dermatix Clinic Woodbridge",
   description:
-    "A tight, intentional menu of medical aesthetic protocols — physician-led and delivered in-house in Woodbridge, Ontario.",
+    "Explore the Dermatix Clinic service menu in Woodbridge, Ontario, including injectables, skin treatments, laser, body contouring, and intimate wellness.",
 };
 
 // Editorial-grid sizes — 12-column grid, varied cards for visual rhythm
@@ -48,7 +48,7 @@ export default function ServicesPage() {
         eyebrow="The Menu"
         title="Ten protocols."
         italic="Zero theatrics."
-        lede="Every treatment below is physician-led, delivered in-house, and refined over thousands of cases. Choose a service to read more — or book a consultation and we'll design a plan with you."
+        lede="The confirmed Dermatix service menu, written with enough context to help you ask better questions before you book. Choose a service to read more, or start with a consultation."
       />
 
       <section className="bg-bone pb-24 lg:pb-32">

@@ -10,117 +10,159 @@ export const metadata = {
     "A new patient consultation at Dermatix - a 30-minute, physician-led conversation about your skin, your goals, and the right plan.",
 };
 
-const expectations = [
+const consultFeatures = [
   {
-    no: "01",
-    label: "Conversation",
-    body: "Your concerns, history, lifestyle and goals — without a sales pitch.",
+    icon: "clock",
+    label: "30 minutes",
+    body: "Focused on you and your goals.",
   },
   {
-    no: "02",
-    label: "Assessment",
-    body: "Skin analysis, facial mapping and photo-documentation under controlled light.",
+    icon: "shield",
+    label: "Physician-led",
+    body: "Medical expertise you can trust.",
   },
   {
-    no: "03",
-    label: "Plan",
-    body: "A staged plan with cost ranges and realistic timelines — yours to take home.",
+    icon: "sliders",
+    label: "Personalized plan",
+    body: "Treatments that make sense for your skin and life.",
   },
   {
-    no: "04",
-    label: "Decide later",
-    body: "No pressure to book on the day. We'd rather you choose at your own pace.",
+    icon: "leaf",
+    label: "No pressure",
+    body: "Honest recommendations. No add-ons.",
   },
 ];
+
+function FeatureIcon({ type }) {
+  if (type === "clock") {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden className="h-10 w-10">
+        <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M24 13v12l8 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  if (type === "shield") {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden className="h-10 w-10">
+        <path d="M24 6l15 6v11c0 10-6.4 16.3-15 19-8.6-2.7-15-9-15-19V12l15-6z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        <path d="M17.5 24.5l4.4 4.4 9.2-10" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  if (type === "sliders") {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden className="h-10 w-10">
+        <path d="M14 8v32M24 8v32M34 8v32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+        <circle cx="14" cy="17" r="4" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="24" cy="30" r="4" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="34" cy="20" r="4" fill="none" stroke="currentColor" strokeWidth="1.6" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 48 48" aria-hidden className="h-10 w-10">
+      <path d="M25 42c10-6 14-16 10-30-14 5-22 13-22 23" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="M13 35c7-2 13-8 17-18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export default function ConsultationPage() {
   return (
     <main className="relative">
       <Nav />
 
-      {/* Hero */}
-      <section className="relative pt-28 lg:pt-32 pb-16 lg:pb-24 bg-bone border-b border-ink/10">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-12 gap-8 lg:gap-12 items-end">
-          <div className="col-span-12 lg:col-span-7">
-            <p className="eyebrow text-ink/50 mb-4 tracking-wider3">
-              New patient consultation
-            </p>
-            <h1 className="display text-[12vw] sm:text-[8vw] lg:text-[6.5rem] xl:text-[7.4rem] leading-[0.92] tracking-tightest">
+      <section className="relative min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)] overflow-hidden bg-bone pt-20 lg:pt-20 border-b border-ink/10">
+        <div className="absolute inset-y-0 left-[40vw] right-0 hidden md:block">
+          <Image
+            src="/images/consultation-landing.png"
+            alt="Consultation appointment at Dermatix Clinic"
+            fill
+            priority
+            sizes="60vw"
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="absolute inset-0 md:hidden">
+          <Image
+            src="/images/consultation-landing.png"
+            alt="Consultation appointment at Dermatix Clinic"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[64%_center]"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(246,241,231,1)_0%,rgba(246,241,231,1)_40%,rgba(246,241,231,0.72)_48%,rgba(246,241,231,0)_60%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(246,241,231,0.18)_0%,rgba(246,241,231,0)_38%,rgba(246,241,231,0.58)_100%)]" />
+
+        <div className="relative z-[1] mx-auto max-w-[1400px] px-6 lg:px-10 min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)] flex flex-col justify-center pb-36 lg:pb-36">
+          <div className="max-w-[520px] pt-10 lg:pt-0">
+            <div className="mb-5">
+              <p className="eyebrow text-clay/70 tracking-wider3">
+                New patient consultation
+              </p>
+              <div className="mt-3 h-px w-14 bg-clay/45" />
+            </div>
+
+            <h1 className="display text-[clamp(58px,8vw,112px)] leading-[0.88] tracking-tightest">
               The plan
               <br />
               <span className="display-italic text-stone">comes first.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-[15px] lg:text-[16px] leading-relaxed text-ink/75">
-              A 30-minute, physician-led conversation about your skin, your goals and the
-              right protocol — or sequence of protocols — to get you there. We don't sell
-              add-ons; we design plans.
+
+            <p className="mt-8 max-w-[430px] text-[15px] lg:text-[16px] leading-[1.75] text-ink/72">
+              A 30-minute, physician-led conversation about your skin, your
+              goals and the right protocol — or sequence of protocols — to get
+              you there. We don't sell add-ons; we design plans.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-6 eyebrow text-ink/60">
-              <span>30 min</span>
-              <span className="w-1 h-1 rounded-full bg-ink/30" />
-              <span>Physician-led · By appointment</span>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/book/consultation"
-                className="group inline-flex items-center gap-2 rounded-full bg-ink text-bone px-6 py-3.5 text-[12px] tracking-wider2 uppercase hover:bg-moss transition-colors"
+                className="group inline-flex items-center gap-2 rounded-full bg-ink text-bone px-7 py-4 text-[12px] tracking-wider2 uppercase hover:bg-moss transition-colors"
               >
                 Book consultation
                 <span className="arrow-slide">→</span>
               </Link>
               <Link
                 href="/services"
-                className="group inline-flex items-center gap-2 rounded-full bg-bone text-ink border border-ink/15 px-6 py-3.5 text-[12px] tracking-wider2 uppercase hover:bg-cream transition-colors"
+                className="group inline-flex items-center gap-2 rounded-full bg-bone/45 backdrop-blur-sm text-ink border border-ink/18 px-7 py-4 text-[12px] tracking-wider2 uppercase hover:bg-bone transition-colors"
               >
                 View services
               </Link>
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full overflow-hidden grain vignette">
-              <Image
-                src="/images/face-mapping.jpg"
-                alt="Consultation"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
-              />
+          <div className="relative mt-12 w-full lg:absolute lg:left-10 lg:right-10 lg:bottom-8 lg:mt-0 lg:w-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 rounded-[8px] border border-ink/12 bg-bone/80 backdrop-blur-xl shadow-[0_24px_80px_-44px_rgba(23,21,15,0.45)] overflow-hidden">
+              {consultFeatures.map((feature) => (
+                <div
+                  key={feature.label}
+                  className="flex items-center gap-5 px-6 py-5 lg:px-8 lg:py-7 border-b md:border-r md:border-b-0 border-ink/10 last:border-b-0 lg:last:border-r-0 text-clay"
+                >
+                  <div className="shrink-0 text-gold">
+                    <FeatureIcon type={feature.icon} />
+                  </div>
+                  <div>
+                    <h2 className="display text-[24px] leading-tight tracking-tightest text-ink">
+                      {feature.label}
+                    </h2>
+                    <p className="mt-1 text-[13px] leading-relaxed text-ink/62">
+                      {feature.body}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* What to expect */}
-      <section className="py-20 lg:py-28 bg-cream border-b border-ink/10">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <div className="mb-12 lg:mb-16 max-w-3xl">
-            <p className="eyebrow text-ink/50 mb-3">§ What to expect</p>
-            <h2 className="display text-[42px] lg:text-[64px] leading-tight tracking-tightest">
-              An hour, well{" "}
-              <span className="display-italic text-stone">spent.</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 border border-ink/10">
-            {expectations.map((p) => (
-              <Reveal key={p.no}>
-                <div className="bg-cream p-6 lg:p-8 min-h-[220px]">
-                  <div className="eyebrow text-ink/40 mb-4">{p.no}</div>
-                  <h3 className="display text-[26px] leading-tight tracking-tightest">
-                    {p.label}
-                  </h3>
-                  <p className="mt-3 text-[13px] leading-relaxed text-ink/65">
-                    {p.body}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Notes & policies */}
       <section className="py-20 lg:py-28 bg-bone border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-12 gap-8 lg:gap-16">
           <Reveal className="col-span-12 lg:col-span-4">
@@ -134,11 +176,11 @@ export default function ConsultationPage() {
           <div className="col-span-12 lg:col-span-8">
             <ul className="border-t border-ink/10 text-[15px]">
               {[
-                "Come with a clean face if possible — makeup is fine, we'll cleanse.",
-                "Bring a list of any medications, supplements or recent treatments.",
-                "Allow 30 minutes. Plans take time, and you should feel unrushed.",
-                "We accept all major credit cards. Treatment plans can be staged.",
-                "24-hour cancellation policy. We'll send a reminder the day before.",
+                "Come with a clean face if possible. If not, we can cleanse before assessment.",
+                "Bring a list of medications, supplements, allergies and recent treatments.",
+                "Share any pregnancy, breastfeeding, cold sore, skin sensitivity or medical history that may affect treatment planning.",
+                "Bring reference photos if they help explain what you like, what you dislike or what you want to avoid.",
+                "Allow 30 minutes. You can leave with the plan and decide on treatment later.",
               ].map((p, i) => (
                 <li
                   key={i}
@@ -155,7 +197,6 @@ export default function ConsultationPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-24 lg:py-32 bg-ink text-bone">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-12 gap-8 items-end">
           <div className="col-span-12 lg:col-span-8">

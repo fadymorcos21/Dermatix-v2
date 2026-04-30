@@ -23,7 +23,9 @@ export default function BookPage({ searchParams }) {
       <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-24 bg-bone border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-12 gap-8 lg:gap-16">
           <div className="col-span-12 lg:col-span-5">
-            <p className="eyebrow text-ink/50 mb-4 tracking-wider3">Appointment</p>
+            <p className="eyebrow text-ink/50 mb-4 tracking-wider3">
+              Appointment
+            </p>
             <h1 className="display text-[12vw] sm:text-[8vw] lg:text-[6.5rem] xl:text-[7rem] leading-[0.92] tracking-tightest">
               Book your
               <br />
@@ -55,28 +57,30 @@ export default function BookPage({ searchParams }) {
             )}
 
             <div className="mt-10 border-t border-ink/10 pt-6">
-              <p className="eyebrow text-ink/50 mb-3">First time with us?</p>
-              <Link
-                href="/book/consultation"
-                className="group inline-flex items-center gap-2 text-[13px] editorial-link"
-              >
-                Book a new patient consultation instead
-                <span className="arrow-slide">→</span>
-              </Link>
-            </div>
-
-            <div className="mt-8 border-t border-ink/10 pt-6 text-[13px] text-ink/65 space-y-2">
-              <p>10 – 110 Ansley Grove Rd, Woodbridge, ON L4L 3R1</p>
-              <p>
-                <a href="tel:19056058444" className="editorial-link">
-                  1·905·605·8444
-                </a>
+              <p className="eyebrow text-ink/50 mb-3">
+                First time with us, or have questions?
               </p>
-              <p>
-                <a href="mailto:clinic@dermatixclinic.com" className="editorial-link">
-                  clinic@dermatixclinic.com
-                </a>
+              <p className="text-[13px] leading-relaxed text-ink/65 max-w-md mb-4">
+                Start with a consultation if you are unsure which treatment is
+                right, or send an inquiry if you need a quick answer before
+                booking.
               </p>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+                <Link
+                  href="/book/consultation"
+                  className="group inline-flex items-center gap-2 text-[13px] editorial-link"
+                >
+                  Book a consultation
+                  <span className="arrow-slide">→</span>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-2 text-[13px] editorial-link"
+                >
+                  Ask a question
+                  <span className="arrow-slide">→</span>
+                </Link>
+              </div>
             </div>
           </div>
 
