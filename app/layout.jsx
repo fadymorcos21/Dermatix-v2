@@ -26,7 +26,7 @@ const mono = JetBrains_Mono({
 export const metadata = {
   title: "Dermatix — Medical Aesthetics. Woodbridge.",
   description:
-    "A quiet studio for the obsessively subtle: Botox, filler, HIFU, PRP, Hydrafacial and more. Woodbridge, Ontario.",
+    "A studio for the obsessively subtle: Botox, filler, HIFU, PRP, Hydrafacial and more. Woodbridge, Ontario.",
   openGraph: {
     title: "Dermatix — Medical Aesthetics",
     description:
@@ -41,8 +41,13 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
-      <body className="bg-bone text-ink antialiased overflow-x-hidden">{children}</body>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+    >
+      <body className="bg-bone text-ink antialiased overflow-x-hidden">
+        {children}
+      </body>
     </html>
   );
 }

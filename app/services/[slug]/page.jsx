@@ -145,13 +145,13 @@ export default function ServiceDetailPage({ params }) {
                       ))}
                     </ul>
                   </div>
-                  <div className="py-5">
+                  {/* <div className="py-5">
                     <p className="eyebrow text-ink/45 mb-3">Keep in mind</p>
                     <p className="text-[14px] leading-relaxed text-ink/68">
                       Service details, candidacy, treatment intensity, downtime,
                       and sequencing should be confirmed during a consultation.
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Reveal>
@@ -159,7 +159,7 @@ export default function ServiceDetailPage({ params }) {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-bone border-b border-ink/10">
+      {/* <section className="py-20 lg:py-28 bg-bone border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-12 gap-8 lg:gap-16">
           <Reveal className="col-span-12 lg:col-span-4">
             <p className="eyebrow text-ink/50 mb-3">§ Fit check</p>
@@ -228,7 +228,7 @@ export default function ServiceDetailPage({ params }) {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-20 lg:py-28 bg-bone border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-12 gap-8 lg:gap-16">

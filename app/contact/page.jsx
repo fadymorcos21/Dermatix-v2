@@ -17,15 +17,18 @@ export default function ContactPage() {
       <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-24 bg-bone border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-12 gap-8 lg:gap-16">
           <div className="col-span-12 lg:col-span-5">
-            <p className="eyebrow text-ink/50 mb-4 tracking-wider3">Inquiries</p>
+            <p className="eyebrow text-ink/50 mb-4 tracking-wider3">
+              Inquiries
+            </p>
             <h1 className="display text-[12vw] sm:text-[8vw] lg:text-[6.5rem] xl:text-[7.4rem] leading-[0.92] tracking-tightest">
               Say
               <br />
               <span className="display-italic text-stone">hello.</span>
             </h1>
             <p className="mt-6 max-w-md text-[15px] lg:text-[16px] leading-relaxed text-ink/75">
-              Questions about a treatment, pricing, or whether something is right for
-              you? Send us a note. We answer every inquiry within one business day.
+              Questions about a treatment, pricing, or whether something is
+              right for you? Send us a note. We answer every inquiry as soon as
+              we can.
             </p>
 
             <div className="mt-10 border-t border-ink/10 pt-6 space-y-5">
@@ -39,7 +42,10 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="eyebrow text-ink/50 mb-2">Phone</p>
-                <a href="tel:19056058444" className="editorial-link text-[14px]">
+                <a
+                  href="tel:19056058444"
+                  className="editorial-link text-[14px]"
+                >
                   1·905·605·8444
                 </a>
               </div>
@@ -59,9 +65,9 @@ export default function ContactPage() {
               <div>
                 <p className="eyebrow text-ink/50 mb-2">Hours</p>
                 <ul className="text-[14px] text-ink/75 space-y-1">
-                  <li>Tue – Fri · 10a – 7p</li>
-                  <li>Sat · 10a – 4p</li>
-                  <li>Sun – Mon · closed</li>
+                  <li>Mon – Fri · 9a – 6p</li>
+                  <li>Sat · 9a – 4p</li>
+                  <li>Sun · closed</li>
                 </ul>
               </div>
             </div>

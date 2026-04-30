@@ -9,7 +9,7 @@ export default function Services() {
       id="services"
       className="relative py-9 lg:py-16"
       style={{
-        background: "linear-gradient(to bottom, #f8f4ef 0, #f6f1e7 220px)",
+        background: "linear-gradient(to bottom, #f8f4ef 0%, #f1ead8 100%)",
       }}
     >
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -24,9 +24,8 @@ export default function Services() {
           </Reveal>
           <Reveal delay={140} className="max-w-sm">
             <p className="text-[14px] leading-relaxed text-ink/70">
-              A considered menu of injectables, skin treatments, laser, body
-              contouring, and intimate wellness. Each service page now gives you
-              the useful questions before the consult.
+              Five categories, ten protocols: injectables, skin renewal, laser,
+              body contouring, and intimate wellness.
             </p>
             <Link
               href="/consultation"

@@ -19,7 +19,7 @@ export default function CTA() {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 py-28 lg:py-40">
         <div className="flex items-center justify-between eyebrow text-bone/60">
-          <span>§ 08 — Bookings</span>
+          <span>§ 04 — Bookings</span>
           <span className="hidden sm:flex items-center gap-2">
             <span className="pulse-dot" style={{ background: "#d9c4a1" }} />
             Taking new patients · 2026
@@ -38,9 +38,9 @@ export default function CTA() {
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
           <Reveal className="col-span-1 lg:col-span-5 max-w-md">
             <p className="text-[15px] leading-relaxed text-bone/75">
-              Your first visit is an hour. No pressure, no plan without your
-              sign-off. We&apos;ll photograph, map, and quote in writing before
-              any product is touched.
+              Your first consultation is thirty minutes. No pressure, no plan
+              without your sign-off. We&apos;ll discuss, map, and quote in
+              writing before any product is touched.
             </p>
           </Reveal>
 
@@ -66,7 +66,7 @@ export default function CTA() {
 
         {/* Decorative bottom line */}
         <div className="mt-24 pt-6 border-t border-bone/20 flex items-center justify-between eyebrow text-bone/50">
-          <span>Dermatix · established 2020</span>
+          <span>Dermatix · established 2019</span>
           <span className="display-italic text-champagne text-[18px]">
             — see you soon.
           </span>

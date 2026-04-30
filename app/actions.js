@@ -284,7 +284,7 @@ function customerInquiryEmail(payload) {
       `Hi ${payload.name || "there"},`,
       "",
       "Thanks for reaching out to Dermatix Clinic.",
-      "Our team will write back within one business day.",
+      "Our team will write back as soon as we can.",
       "",
       `Subject: ${payload.subject}`,
       "",
@@ -296,7 +296,7 @@ function customerInquiryEmail(payload) {
       <h1 style="margin:0;color:#24221f;font-family:Georgia,serif;font-weight:400;font-size:30px;line-height:1.15;">Thanks for reaching out.</h1>
       <p style="margin:18px 0 0;color:#514c45;font-size:15px;line-height:1.6;">Hi ${escapeHtml(
         payload.name || "there",
-      )}, we received your message and our team will write back within one business day.</p>
+      )}, we received your message and our team will write back as soon as we can.</p>
       ${detailsTable([["Subject", payload.subject]])}
       <p style="margin:20px 0 0;color:#514c45;font-size:14px;line-height:1.6;">Dermatix Clinic<br />1-905-605-8444<br />110 Ansley Grove Rd #10, Woodbridge, ON L4L 3R1</p>
     `),
@@ -340,7 +340,12 @@ async function sendResendEmail({ to, replyTo, subject, text, html, tag }) {
   return response.json();
 }
 
-async function sendSubmissionEmails({ staffEmail, customerEmail, replyTo, tag }) {
+async function sendSubmissionEmails({
+  staffEmail,
+  customerEmail,
+  replyTo,
+  tag,
+}) {
   const staffEmails = getStaffEmails();
 
   if (!staffEmails.length) {
@@ -389,8 +394,7 @@ export async function submitBooking(formData) {
 
     return {
       ok: false,
-      message:
-        "Something went wrong. Please try again or call 1-905-605-8444.",
+      message: "Something went wrong. Please try again or call 1-905-605-8444.",
     };
   }
 
@@ -425,14 +429,13 @@ export async function submitInquiry(formData) {
 
     return {
       ok: false,
-      message:
-        "Something went wrong. Please try again or call 1-905-605-8444.",
+      message: "Something went wrong. Please try again or call 1-905-605-8444.",
     };
   }
 
   return {
     ok: true,
     message:
-      "Thank you - your message has been received. We'll be in touch within one business day.",
+      "Thank you - your message has been received. We'll be in touch as soon as we can.",
   };
 }

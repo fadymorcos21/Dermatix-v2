@@ -56,6 +56,9 @@ body {
   transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.reveal.from-top {
+  transform: translateY(-40px);
+}
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);

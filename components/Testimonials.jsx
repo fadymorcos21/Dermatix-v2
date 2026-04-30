@@ -2,19 +2,19 @@ import Reveal from "./Reveal";
 
 const quotes = [
   {
-    q: "I went in for a consult and walked out with the first plan that didn't feel like an upsell. Six months later, my own mother asked what serum I was using.",
-    n: "M. R.",
-    t: "Patient · lip architecture + microtox",
+    q: "A one-stop place for skin, face, body and health care. The clinic is tidy and clean, and the doctors are all professionals. Dr. Farid Parham is gentle, warm and highly knowledgeable — you feel you are in good hands the moment he starts talking. And the owner, Albert, is humble and attentive; he makes you feel part of the family.",
+    n: "Maria S. Nueno",
+    t: "Google review",
   },
   {
-    q: "Dermatix is the only clinic in the GTA where the doctor does the photos, the mapping, and the injections herself. It shows — in every millimetre.",
-    n: "A. K.",
-    t: "Patient · HIFU rebuild",
+    q: "Always a great experience. Caring. Knowledgeable. I highly recommend it.",
+    n: "Josie Carnovale",
+    t: "Google review",
   },
   {
-    q: "The room is beautiful, but the work is what keeps me. Three years on and nobody has ever said the word 'work'. Just 'you look well'.",
-    n: "J. D.",
-    t: "Patient since 2023",
+    q: "I come here every time for my services. The Dr. is extremely knowledgeable and I feel safe doing any procedure with him. Highly recommend!!! I will be back soon for more!",
+    n: "Local Guide",
+    t: "Google review",
   },
 ];
 
@@ -23,9 +23,9 @@ export default function Testimonials() {
     <section id="testimonials" className="relative py-28 lg:py-40 bg-bone">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <Reveal>
-          <p className="eyebrow text-ink/50 mb-3">§ 06 — The notes</p>
+          <p className="eyebrow text-ink/50 mb-3">§ 05 — The notes</p>
           <h2 className="display text-[9vw] lg:text-[5.8rem] leading-[0.95] tracking-tightest max-w-4xl">
-            Read 847 reviews and this is the <span className="display-italic text-stone">through-line.</span>
+            Read the reviews — <span className="display-italic text-stone">the same words keep coming back.</span>
           </h2>
         </Reveal>
 

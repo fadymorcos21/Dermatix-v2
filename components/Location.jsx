@@ -12,7 +12,7 @@ export default function Location() {
         {/* Left — copy + details */}
         <div className="col-span-12 lg:col-span-5">
           <Reveal>
-            <p className="eyebrow text-ink/50 mb-3">§ 07 — Visit</p>
+            <p className="eyebrow text-ink/50 mb-3">§ 06 — Visit</p>
             <h2 className="display text-[10vw] lg:text-[6rem] leading-[0.95] tracking-tightest">
               Woodbridge.
               <br />
@@ -40,11 +40,11 @@ export default function Location() {
               <div>
                 <dt className="eyebrow text-ink/50 mb-2">Hours</dt>
                 <dd className="leading-relaxed">
-                  Tue – Fri · 10a – 7p
+                  Mon – Fri · 9a – 6p
                   <br />
-                  Sat · 10a – 4p
+                  Sat · 9a – 4p
                   <br />
-                  Sun – Mon · closed
+                  Sun · closed
                 </dd>
               </div>
               <div>
@@ -103,7 +103,7 @@ export default function Location() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
               <div className="pointer-events-none absolute inset-0 ring-1 ring-ink/10" />
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between eyebrow text-ink/60 bg-bone/80 backdrop-blur px-3 py-2">
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between eyebrow text-ink/60 bg-bone/80 backdrop-blur px-3 py-2">
                 <span>Dermatix · Woodbridge studio</span>
                 <span>43°46&apos;N · 79°36&apos;W</span>
               </div>

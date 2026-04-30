@@ -19,12 +19,12 @@ export default function Page() {
       <Marquee />
       <Philosophy />
       <Services />
-      <Signature />
+      {/* <Signature /> */}
       <Experience />
-      <Editorial />
+      <CTA />
       <Testimonials />
       <Location />
-      <CTA />
+      <Editorial />
       <Footer />
     </main>
   );

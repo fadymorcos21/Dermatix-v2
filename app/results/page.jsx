@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
+import BeforeAfter from "@/components/BeforeAfter";
 
 export const metadata = {
   title: "Results · Dermatix Clinic Woodbridge",
@@ -12,37 +12,27 @@ export const metadata = {
 };
 
 const stats = [
-  { n: "10", l: "Services listed" },
-  { n: "#10", l: "Ansley Grove unit" },
-  { n: "5.0", l: "Public review listing" },
-  { n: "12", l: "Reviews listed publicly" },
+  { n: "10", l: "Amazing services" },
+  { n: "5.0", l: "Star overall rating" },
+  { n: "2019", l: "Serving Woodbridge since" },
 ];
 
-const reviewHighlights = [
+const reviews = [
   {
-    q: "I come here every time for my services, the Dr. is extremely knowledgeable and i feel safe doing any procedure with him. Highly recommend!!! I will be back soon for more!",
-    n: "Public review excerpt",
-    t: "BestProsInTown listing",
+    q: "A one-stop place for skin, face, body and health care. The clinic is tidy and clean, and the doctors are all professionals. Dr. Farid Parham is gentle, warm and highly knowledgeable — you feel you are in good hands the moment he starts talking. And the owner, Albert, is humble and attentive; he makes you feel part of the family.",
+    n: "Maria S. Nueno",
+    t: "Google review",
   },
   {
-    q: "Dermatix Clinic is listed among Woodbridge skin care clinics with a 5.0 public rating summary.",
-    n: "Public listing note",
-    t: "BestProsInTown Woodbridge roundup",
+    q: "Always a great experience. Caring. Knowledgeable. I highly recommend it.",
+    n: "Josie Carnovale",
+    t: "Google review",
   },
   {
-    q: "The public listing places Dermatix Clinic at 110 Ansley Grove Rd #10, Woodbridge, matching the client meeting notes.",
-    n: "Location note",
-    t: "Public directory listing",
+    q: "I come here every time for my services. The Dr. is extremely knowledgeable and I feel safe doing any procedure with him. Highly recommend!!! I will be back soon for more!",
+    n: "Local Guide",
+    t: "Google review",
   },
-];
-
-const galleryImages = [
-  "/images/glowing-skin.jpg",
-  "/images/editorial-portrait.jpg",
-  "/images/eye-mapping.jpg",
-  "/images/face-mapping.jpg",
-  "/images/hifu-treatment.jpg",
-  "/images/prp-treatment.jpg",
 ];
 
 export default function ResultsPage() {
@@ -52,13 +42,13 @@ export default function ResultsPage() {
 
       <PageHeader
         eyebrow="Results & Reviews"
-        title="Public notes,"
-        italic="carefully."
-        lede="A lighter, factual review page: public listing highlights, clinic visuals, and no invented treatment counts, testimonials, or before-and-after claims."
+        title="Hear from"
+        italic="our patients."
+        lede="Real reviews from real visits — and a look inside the Woodbridge studio."
       />
 
       <section className="bg-bone border-b border-ink/10 py-10 lg:py-14">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((s) => (
             <div key={s.l} className="flex items-baseline gap-4">
               <span className="num text-[36px] lg:text-[44px] tracking-tight">
@@ -75,20 +65,19 @@ export default function ResultsPage() {
       <section className="py-20 lg:py-28 bg-bone border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
-            <p className="eyebrow text-ink/50 mb-3">§ Public review notes</p>
+            <p className="eyebrow text-ink/50 mb-3">§ Patient reviews</p>
             <h2 className="display text-[9vw] lg:text-[5.6rem] leading-[0.95] tracking-tightest max-w-4xl">
-              What is public,
-              <br />
-              <span className="display-italic text-stone">not invented.</span>
+              Read in{" "}
+              <span className="display-italic text-stone">their words.</span>
             </h2>
           </Reveal>
 
           <div className="mt-12 lg:mt-20 grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
-            {reviewHighlights.map((q, i) => (
-              <Reveal key={q.q} delay={i * 100}>
-                <figure className="bg-bone p-8 lg:p-10 h-full flex flex-col justify-between min-h-[320px]">
-                  <blockquote className="display text-[22px] lg:text-[26px] leading-[1.2] text-ink/90">
-                    “{q.q}”
+            {reviews.map((q, i) => (
+              <Reveal key={q.n} delay={i * 100}>
+                <figure className="bg-bone p-8 lg:p-10 h-full flex flex-col justify-between min-h-[340px]">
+                  <blockquote className="display text-[20px] lg:text-[22px] leading-[1.25] text-ink/90">
+                    &ldquo;{q.q}&rdquo;
                   </blockquote>
                   <figcaption className="mt-10 flex items-center justify-between gap-4">
                     <div>
@@ -104,35 +93,75 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-cream border-b border-ink/10">
+      <section className="py-20 lg:py-28 bg-bone border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
+          <div className="mb-12 lg:mb-16 max-w-3xl">
             <Reveal>
-              <p className="eyebrow text-ink/50 mb-3">§ Clinic visuals</p>
-              <h2 className="display text-[42px] lg:text-[64px] leading-tight tracking-tightest max-w-3xl">
-                A small{" "}
-                <span className="display-italic text-stone">window.</span>
+              <p className="eyebrow text-ink/50 mb-3">§ Before / After</p>
+              <h2 className="display text-[9vw] lg:text-[5.6rem] leading-[0.95] tracking-tightest">
+                Before,{" "}
+                <span className="display-italic text-stone">after.</span>
               </h2>
+              <p className="mt-5 text-[14px] text-ink/65 max-w-md leading-relaxed">
+                Drag to compare. Real patient before-and-after photographs are
+                shared privately in consultation, with consent — this is a
+                format preview.
+              </p>
             </Reveal>
-            <p className="max-w-sm text-[13px] text-ink/65 leading-relaxed">
-              These images are used as visual atmosphere across the site. Add
-              verified before-and-after cases only once the client approves the
-              exact photos and release language.
-            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-5">
-            {galleryImages.map((src, i) => (
-              <Reveal key={src} delay={(i % 3) * 80}>
-                <div className="relative aspect-[4/5] w-full overflow-hidden grain">
-                  <Image
-                    src={src}
-                    alt={`Dermatix visual ${i + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <Reveal>
+              <BeforeAfter
+                beforeSrc="/images/editorial-portrait.jpg"
+                afterSrc="/images/editorial-portrait.jpg"
+                beforeLabel="Before"
+                afterLabel="After"
+              />
+            </Reveal>
+
+            <Reveal delay={140}>
+              <h3 className="display text-[clamp(36px,4.5vw,64px)] leading-[0.98] tracking-tightest">
+                Photographed in the same chair,{" "}
+                <span className="display-italic text-stone">
+                  the same daylight.
+                </span>
+              </h3>
+              <p className="mt-6 text-[15px] leading-relaxed text-ink/75 max-w-[44ch]">
+                Standardised lighting, same angle, same time of day — so what
+                you see is the change, not the camera. The full gallery is kept
+                in-clinic and shared with patient consent during consultation.
+              </p>
+              <div className="mt-8">
+                <Link
+                  href="/book/consultation"
+                  className="group inline-flex items-center gap-2 rounded-full bg-ink text-bone px-6 py-3.5 text-[12px] tracking-wider2 uppercase hover:bg-moss transition-colors"
+                >
+                  Book a consultation
+                  <span className="arrow-slide">→</span>
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-28 bg-cream border-b border-ink/10">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+          <Reveal>
+            <p className="eyebrow text-ink/50 mb-3">§ Clinic visuals</p>
+            <h2 className="display text-[42px] lg:text-[64px] leading-tight tracking-tightest max-w-3xl">
+              A quick{" "}
+              <span className="display-italic text-stone">
+                peak at what we do.
+              </span>
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-5">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <Reveal key={i} delay={(i % 3) * 80}>
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink/10" />
               </Reveal>
             ))}
           </div>

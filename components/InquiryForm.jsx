@@ -24,7 +24,8 @@ export default function InquiryForm() {
       <div className="bg-bone border border-ink/15 p-8 lg:p-12">
         <p className="eyebrow text-ink/50 mb-4">Sent</p>
         <h2 className="display text-[40px] lg:text-[56px] leading-tight tracking-tightest">
-          Thank you. <span className="display-italic text-stone">We'll be in touch.</span>
+          Thank you.{" "}
+          <span className="display-italic text-stone">We'll be in touch.</span>
         </h2>
         <p className="mt-5 text-[15px] leading-relaxed text-ink/75 max-w-md">
           {result.message}
@@ -45,7 +46,10 @@ export default function InquiryForm() {
   const labelClass = "eyebrow text-ink/55 mb-2 block";
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <form
+      onSubmit={handleSubmit}
+      className="grid grid-cols-1 md:grid-cols-2 gap-5"
+    >
       <div>
         <label htmlFor="name" className={labelClass}>
           Full name
@@ -119,7 +123,8 @@ export default function InquiryForm() {
 
       <div className="md:col-span-2 flex items-center justify-between gap-4 pt-3">
         <p className="text-[12px] text-ink/55 max-w-md">
-          We'll write back within one business day. Nothing is shared with third parties.
+          We'll write back as soon as we can. Nothing is shared with third
+          parties.
         </p>
         <button
           type="submit"

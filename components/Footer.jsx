@@ -10,9 +10,8 @@ export default function Footer() {
             <span className="display-italic text-stone">.</span>
           </p>
           <p className="mt-5 text-[13px] text-ink/65 max-w-md leading-relaxed">
-            A quiet studio for medical aesthetics in Woodbridge, Ontario.
-            Physician-led, European-trained, obsessively subtle. Serving the GTA
-            since 2020.
+            A studio for medical aesthetics in Woodbridge, Ontario.
+            Physician-led, obsessively subtle. Serving the GTA since 2019.
           </p>
         </div>
 
@@ -50,9 +49,9 @@ export default function Footer() {
         <div className="col-span-6 lg:col-span-2">
           <p className="eyebrow text-ink/50 mb-4">Studio</p>
           <ul className="space-y-2 text-[13px] text-ink/75">
-            <li>Tue – Fri · 10a – 7p</li>
-            <li>Sat · 10a – 4p</li>
-            <li>Sun – Mon · closed</li>
+            <li>Mon – Fri · 9a – 6p</li>
+            <li>Sat · 9a – 4p</li>
+            <li>Sun · closed</li>
           </ul>
         </div>
 

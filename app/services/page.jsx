@@ -47,8 +47,8 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="The Menu"
         title="Ten protocols."
-        italic="Zero theatrics."
-        lede="The confirmed Dermatix service menu, written with enough context to help you ask better questions before you book. Choose a service to read more, or start with a consultation."
+        italic="Carefully considered."
+        lede="Explore our treatments with clear, helpful context before booking. Choose a service to learn more, or start with a consultation."
       />
 
       <section className="bg-bone pb-24 lg:pb-32">
@@ -98,7 +98,9 @@ export default function ServicesPage() {
                     </p>
                     <div className="mt-auto pt-4 border-t border-ink/15 flex items-center justify-between">
                       <span className="eyebrow text-ink/55">Read protocol</span>
-                      <span className="arrow-slide text-ink/70 text-[14px]">→</span>
+                      <span className="arrow-slide text-ink/70 text-[14px]">
+                        →
+                      </span>
                     </div>
                   </div>
                 </Link>
@@ -108,7 +110,9 @@ export default function ServicesPage() {
 
           <div className="mt-16 lg:mt-24 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-ink/15 pt-10">
             <div>
-              <p className="eyebrow text-ink/50 mb-2">Not sure where to start?</p>
+              <p className="eyebrow text-ink/50 mb-2">
+                Not sure where to start?
+              </p>
               <p className="display text-[28px] lg:text-[36px] leading-tight tracking-tightest max-w-xl">
                 Book a consultation and we'll build the right plan together.
               </p>

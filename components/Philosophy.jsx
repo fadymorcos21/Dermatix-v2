@@ -117,8 +117,8 @@ export default function Philosophy() {
                   deliberate work — calibrated to the features you already have.
                 </p>
                 <p className="sm:border-l sm:border-ink/15 sm:pl-6">
-                  The result is an outcome your friends will notice but never
-                  place — the cleanest compliment in aesthetics.
+                  The result is an outcome your friends will notice — the
+                  cleanest compliment in aesthetics.
                 </p>
               </div>
             </Reveal>
