@@ -39,7 +39,7 @@ export default function Hero() {
           >
             Dermatix Clinic Woodbridge
           </p>
-          <h1 className="display text-ink text-[9vw] sm:text-[7vw] lg:text-[5.4rem] xl:text-[6rem] leading-[0.95] tracking-tightest">
+          {/* <h1 className="display text-ink text-[9vw] sm:text-[7vw] lg:text-[5.4rem] xl:text-[6rem] leading-[0.95] tracking-tightest">
             <span
               className="block animate-fade-up"
               style={{ animationDelay: "200ms" }}
@@ -61,6 +61,41 @@ export default function Hero() {
             <span
               className="block  animate-fade-up"
               style={{ animationDelay: "860ms" }}
+            >
+              Dermatix
+            </span>
+          </h1> */}
+          <h1 className="display text-ink text-[9vw] sm:text-[7vw] lg:text-[5.4rem] xl:text-[6rem] leading-[0.95] tracking-tightest">
+            <span
+              className="block animate-fade-up"
+              style={{ animationDelay: "200ms" }}
+            >
+              Your
+            </span>
+
+            <span
+              className="block display-italic animate-fade-up"
+              style={{
+                animationDelay: "420ms",
+                color: "#8A6338",
+              }}
+            >
+              Glow Up
+            </span>
+
+            <span
+              className="block animate-fade-up"
+              style={{ animationDelay: "640ms" }}
+            >
+              Starts at
+            </span>
+
+            <span
+              className="block display-italic animate-fade-up"
+              style={{
+                animationDelay: "860ms",
+                color: "#8A6338",
+              }}
             >
               Dermatix
             </span>
