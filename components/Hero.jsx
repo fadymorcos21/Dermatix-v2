@@ -32,37 +32,51 @@ export default function Hero() {
 
       {/* Hero copy */}
       <div className="relative z-10 mx-auto max-w-[1400px] h-full px-6 lg:px-12 flex items-center">
-        <div className="max-w-xl animate-fade-up">
-          <p className="eyebrow text-[#8a1f2b] mb-5 tracking-wider3 text-[10px]">
+        <div className="max-w-xl">
+          <p
+            className="eyebrow text-[#8a1f2b] mb-5 tracking-wider3 text-[10px] animate-fade-up"
+            style={{ animationDelay: "0ms" }}
+          >
             Dermatix Clinic Woodbridge
           </p>
-          {/* <h1 className="display text-ink text-[9vw] sm:text-[7vw] lg:text-[5.4rem] xl:text-[6rem] leading-[0.95] tracking-tightest">
-            Medical
-            <br />
-            aesthetics with a
-            <br />
-            lighter touch.
-          </h1> */}
           <h1 className="display text-ink text-[9vw] sm:text-[7vw] lg:text-[5.4rem] xl:text-[6rem] leading-[0.95] tracking-tightest">
-            Your
-            <br />
-            Glow Up Starts at
-            <br />
-            Dermatix
+            <span
+              className="block animate-fade-up"
+              style={{ animationDelay: "200ms" }}
+            >
+              Glow Up
+            </span>
+            <span
+              className="block display-italic text-stone animate-fade-up"
+              style={{ animationDelay: "420ms" }}
+            >
+              Glow Up
+            </span>
+            <span
+              className="block animate-fade-up"
+              style={{ animationDelay: "640ms" }}
+            >
+              Starts at
+            </span>
+            <span
+              className="block display-italic text-stone animate-fade-up"
+              style={{ animationDelay: "860ms" }}
+            >
+              Dermatix
+            </span>
           </h1>
-          {/* <h1 className="display text-ink text-[9vw] sm:text-[7vw] lg:text-[5.4rem] xl:text-[6rem] leading-[0.95] tracking-tightest">
-            Your
-            <br />
-            Glow Up Starts at
-            <br />
-            Dermatix
-          </h1> */}
-          <p className="mt-6 text-[14px] lg:text-[15px] leading-relaxed text-ink/80 max-w-sm">
+          <p
+            className="mt-6 text-[14px] lg:text-[15px] leading-relaxed text-ink/80 max-w-sm animate-fade-up"
+            style={{ animationDelay: "1100ms" }}
+          >
             Personalized injectables, skin renewal, HIFU, PRP, laser hair
             removal, and body contouring in Woodbridge.
           </p>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
+          <div
+            className="mt-7 flex flex-wrap items-center gap-3 animate-fade-up"
+            style={{ animationDelay: "1280ms" }}
+          >
             <Link
               href="/book/consultation"
               className="group inline-flex items-center gap-2 rounded-full bg-ink text-bone pl-4 pr-5 py-3 text-[12px] tracking-wide hover:bg-moss transition-colors"
