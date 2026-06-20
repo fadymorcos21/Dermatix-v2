@@ -12,11 +12,10 @@ Last reviewed: 2026-04-29
 |   +-- /services/prp
 |   +-- /services/dermal-peel
 |   +-- /services/laser-hair-removal
-|   +-- /services/cryolipolysis
 |   +-- /services/hifu-skin-tightening
-|   +-- /services/hifu-vaginal-tightening
 |   +-- /services/hydrafacial
 |   +-- /services/dermabrasion
+|   +-- /services/scar-revision
 +-- /consultation
 +-- /results
 +-- /contact
@@ -118,11 +117,10 @@ Valid service detail routes:
 | `/services/prp` | PRP Treatment |
 | `/services/dermal-peel` | Dermal Peel |
 | `/services/laser-hair-removal` | Laser Hair Removal |
-| `/services/cryolipolysis` | Cryolipolysis |
 | `/services/hifu-skin-tightening` | HIFU Skin Tightening |
-| `/services/hifu-vaginal-tightening` | HIFU Vaginal Tightening |
 | `/services/hydrafacial` | Hydrafacial |
 | `/services/dermabrasion` | Dermabrasion |
+| `/services/scar-revision` | Scar Revision |
 
 Components/imports:
 

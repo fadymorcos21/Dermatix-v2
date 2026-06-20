@@ -174,7 +174,7 @@ export default function Hero() {
       <div className="absolute bottom-6 inset-x-0 z-10 px-6 lg:px-12">
         <div className="mx-auto max-w-[1400px] flex items-center justify-between eyebrow text-ink/70">
           <span className="hidden sm:flex items-center gap-2">
-            <span className="pulse-dot" aria-hidden /> Now booking · Spring 2026
+            <span className="pulse-dot" aria-hidden /> Now booking · Summer 2026
           </span>
           <span className="hidden md:inline">
             10 Ansley Grove Rd · Woodbridge, ON

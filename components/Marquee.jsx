@@ -7,11 +7,10 @@ export default function Marquee() {
     "PRP",
     "Dermal Peel",
     "Laser Hair Removal",
-    "Cryolipolysis",
     "HIFU Skin Tightening",
-    "HIFU Vaginal Tightening",
     "Hydrafacial",
     "Dermabrasion",
+    "Scar Revision",
   ];
 
   return (
