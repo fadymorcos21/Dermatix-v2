@@ -527,6 +527,6 @@ Use this checklist in the meeting before final launch:
 | Booking promises | "Confirmed 30-minute", "no charge until visit", "no treatment on consultation day", and cancellation policy need confirmation. |
 | Inquiry response time | Contact page and form promise one-business-day response. |
 | Privacy/Terms/Instagram | Footer links are placeholders. |
-| Mobile nav | Desktop nav links are hidden on mobile; confirm if a mobile menu is required. |
+| Mobile nav | Mobile hamburger menu added (visible below md); desktop nav unchanged. |
 | Homepage `#book` link | `Location` links to `#book`, but no matching anchor exists. |
 | Service detail copy | New service copy is educational/cautious, but client should still approve wording and any treatment claims. |

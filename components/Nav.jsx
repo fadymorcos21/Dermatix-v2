@@ -10,6 +10,8 @@ export default function Nav() {
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const closeTimer = useRef(null);
 
   useEffect(() => {
@@ -23,7 +25,23 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
 
+  // Close the mobile menu whenever the route changes.
+  useEffect(() => {
+    setMenuOpen(false);
+    setMobileServicesOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll while the mobile menu is open.
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = menuOpen ? "hidden" : original || "";
+    return () => {
+      document.body.style.overflow = original || "";
+    };
+  }, [menuOpen]);
+
   const opaque = scrolled || !isHome;
+  const showBar = opaque || menuOpen;
   const bookLabel = isHome ? "Book" : "Book appointment";
 
   function openServices() {
@@ -39,7 +57,7 @@ export default function Nav() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ${
-        opaque
+        showBar
           ? "backdrop-blur-md bg-bone/85 border-b border-ink/10"
           : "bg-transparent border-b border-transparent"
       }`}
@@ -93,7 +111,9 @@ export default function Nav() {
                 onMouseLeave={scheduleCloseServices}
               >
                 <div className="flex items-baseline justify-between mb-4 pb-3 border-b border-ink/10">
-                  <p className="eyebrow text-ink/55">The Menu · 10 protocols</p>
+                  <p className="eyebrow text-ink/55">
+                    The Menu · {services.length} protocols
+                  </p>
                   <Link
                     href="/services"
                     className="text-[11px] tracking-wider2 uppercase editorial-link"
@@ -172,8 +192,146 @@ export default function Nav() {
             {bookLabel}
             <span className="arrow-slide">→</span>
           </Link>
+
+          {/* Mobile hamburger — visible below md only, desktop is unchanged */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-1.5 text-ink"
+          >
+            <span className="relative block w-5 h-3.5" aria-hidden>
+              <span
+                className={`absolute left-0 block h-[1.5px] w-5 bg-current transition-all duration-300 ${
+                  menuOpen ? "top-1.5 rotate-45" : "top-0"
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1.5 block h-[1.5px] w-5 bg-current transition-all duration-300 ${
+                  menuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute left-0 block h-[1.5px] w-5 bg-current transition-all duration-300 ${
+                  menuOpen ? "top-1.5 -rotate-45" : "top-3"
+                }`}
+              />
+            </span>
+          </button>
         </div>
       </nav>
+
+      {/* Mobile menu — md:hidden so desktop layout is untouched */}
+      <div
+        id="mobile-menu"
+        className={`md:hidden fixed inset-x-0 top-16 bottom-0 z-40 transition-all duration-300 ${
+          menuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Backdrop */}
+        <button
+          type="button"
+          aria-hidden
+          tabIndex={-1}
+          onClick={() => setMenuOpen(false)}
+          className="absolute inset-0 bg-ink/20"
+        />
+
+        {/* Panel */}
+        <div
+          className={`relative bg-bone border-b border-ink/10 shadow-[0_30px_80px_-30px_rgba(23,21,15,0.35)] grain max-h-full overflow-y-auto transition-transform duration-300 ${
+            menuOpen ? "translate-y-0" : "-translate-y-3"
+          }`}
+        >
+          <div className="px-5 py-6">
+            <div className="flex flex-col">
+              {/* Services with collapsible sub-list */}
+              <div className="border-b border-ink/10">
+                <div className="flex items-center justify-between">
+                  <Link
+                    href="/services"
+                    className="display text-[26px] tracking-tightest text-ink py-3"
+                  >
+                    Services
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setMobileServicesOpen((v) => !v)}
+                    aria-label={
+                      mobileServicesOpen
+                        ? "Collapse services"
+                        : "Expand services"
+                    }
+                    aria-expanded={mobileServicesOpen}
+                    className="inline-flex items-center justify-center w-10 h-10 text-ink/70"
+                  >
+                    <span
+                      className={`inline-block transition-transform duration-300 text-[12px] ${
+                        mobileServicesOpen ? "rotate-180" : ""
+                      }`}
+                      aria-hidden
+                    >
+                      ▾
+                    </span>
+                  </button>
+                </div>
+                <ul
+                  className={`overflow-hidden transition-all duration-300 ${
+                    mobileServicesOpen ? "max-h-[640px] pb-3" : "max-h-0"
+                  }`}
+                >
+                  {services.map((s) => (
+                    <li key={s.slug}>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="flex items-baseline gap-3 py-2 text-ink/80"
+                      >
+                        <span className="eyebrow text-ink/40 shrink-0">
+                          {s.no}
+                        </span>
+                        <span className="text-[15px] tracking-wide">
+                          {s.name}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Link
+                href="/consultation"
+                className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
+              >
+                Consultation
+              </Link>
+              <Link
+                href="/results"
+                className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
+              >
+                Results
+              </Link>
+              <Link
+                href="/contact"
+                className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
+              >
+                Contact
+              </Link>
+            </div>
+
+            <Link
+              href="/book/consultation"
+              className="mt-6 group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink text-bone px-5 py-3.5 text-[12px] tracking-wider2 uppercase hover:bg-moss transition-colors"
+            >
+              Book consultation
+              <span className="arrow-slide">→</span>
+            </Link>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

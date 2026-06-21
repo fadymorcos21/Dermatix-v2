@@ -18,10 +18,10 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover object-[70%_top] lg:object-[65%_top]"
         />
-        {/* Light warm wash on the left to brighten the text area, dies off well before the model */}
+        {/* Light warm wash on the left to brighten the text area, dies off well before the model. Desktop (md+) only — hidden on mobile per request. */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(to_right,rgba(248,236,222,0.7)_0%,rgba(248,236,222,0.65)_38%,rgba(248,236,222,0.2)_46%,transparent_52%)] lg:bg-[linear-gradient(to_right,rgba(248,236,222,0.65)_0%,rgba(248,236,222,0.6)_40%,rgba(248,236,222,0.18)_48%,transparent_54%)]"
+          className="hidden md:block absolute inset-0 bg-[linear-gradient(to_right,rgba(248,236,222,0.7)_0%,rgba(248,236,222,0.65)_38%,rgba(248,236,222,0.2)_46%,transparent_52%)] lg:bg-[linear-gradient(to_right,rgba(248,236,222,0.65)_0%,rgba(248,236,222,0.6)_40%,rgba(248,236,222,0.18)_48%,transparent_54%)]"
         />
         {/* Soft top fade so the nav reads cleanly */}
         <div

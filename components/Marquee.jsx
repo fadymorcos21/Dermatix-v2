@@ -22,11 +22,13 @@ export default function Marquee() {
               as="span"
               key={t}
               delay={i * 80}
-              className="display text-[4.6vw] sm:text-[3vw] lg:text-[2.2rem] leading-none text-ink/90 inline-flex items-center"
+              className="inline-flex items-center gap-5 lg:gap-8"
             >
-              {t}
+              <span className="display text-[20px] sm:text-[24px] lg:text-[30px] tracking-tightest text-ink/80 whitespace-nowrap">
+                {t}
+              </span>
               {i < items.length - 1 && (
-                <span aria-hidden className="text-gold ml-5 lg:ml-8">
+                <span className="text-ink/30 text-[10px]" aria-hidden>
                   ✦
                 </span>
               )}
