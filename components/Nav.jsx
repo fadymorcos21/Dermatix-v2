@@ -41,9 +41,6 @@ export default function Nav() {
   }, [menuOpen]);
 
   const opaque = scrolled || !isHome;
-  // NOTE: keep the header free of backdrop-filter while the mobile menu is the
-  // concern — the menu is rendered as a sibling below, never a descendant, so
-  // its fixed positioning resolves against the viewport.
   const showBar = opaque || menuOpen;
   const bookLabel = isHome ? "Book" : "Book appointment";
 
@@ -198,8 +195,7 @@ export default function Nav() {
               <span className="arrow-slide">→</span>
             </Link>
 
-            {/* Mobile hamburger — below md only. Chip background keeps it legible
-                over the transparent hero. Desktop is unchanged. */}
+            {/* Mobile hamburger — below md only. Chip keeps it legible over the hero. */}
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
@@ -230,115 +226,109 @@ export default function Nav() {
         </nav>
       </header>
 
-      {/* Mobile menu — sibling of <header> (NOT a descendant), so its fixed
-          positioning resolves against the viewport even when the header uses
-          backdrop-filter. md:hidden keeps desktop untouched. */}
+      {/* Mobile menu — siblings of <header> (never descendants) so fixed
+          positioning resolves against the viewport. md:hidden = desktop untouched. */}
+
+      {/* Backdrop below the bar; tap to close */}
+      <button
+        type="button"
+        aria-hidden
+        tabIndex={-1}
+        onClick={() => setMenuOpen(false)}
+        className={`md:hidden fixed inset-x-0 top-16 bottom-0 z-[55] bg-ink/25 transition-opacity duration-300 ${
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Panel — drops from under the bar, sized exactly to its content (no scroll). */}
       <div
         id="mobile-menu"
-        className={`md:hidden fixed inset-x-0 top-16 bottom-0 z-[60] transition-opacity duration-300 ${
+        className={`md:hidden fixed inset-x-0 top-16 z-[60] bg-bone border-b border-ink/10 shadow-[0_30px_80px_-30px_rgba(23,21,15,0.45)] grain transition-all duration-300 ${
           menuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        {/* Backdrop */}
-        <button
-          type="button"
-          aria-hidden
-          tabIndex={-1}
-          onClick={() => setMenuOpen(false)}
-          className="absolute inset-0 bg-ink/25"
-        />
-
-        {/* Panel */}
-        <div
-          className={`relative bg-bone border-b border-ink/10 shadow-[0_30px_80px_-30px_rgba(23,21,15,0.45)] grain max-h-full overflow-y-auto transition-transform duration-300 ${
-            menuOpen ? "translate-y-0" : "-translate-y-4"
-          }`}
-        >
-          <div className="px-5 py-6">
-            <div className="flex flex-col">
-              {/* Services with collapsible sub-list */}
-              <div className="border-b border-ink/10">
-                <div className="flex items-center justify-between">
-                  <Link
-                    href="/services"
-                    className="display text-[26px] tracking-tightest text-ink py-3"
-                  >
-                    Services
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => setMobileServicesOpen((v) => !v)}
-                    aria-label={
-                      mobileServicesOpen
-                        ? "Collapse services"
-                        : "Expand services"
-                    }
-                    aria-expanded={mobileServicesOpen}
-                    className="inline-flex items-center justify-center w-10 h-10 text-ink/70"
-                  >
-                    <span
-                      className={`inline-block transition-transform duration-300 text-[12px] ${
-                        mobileServicesOpen ? "rotate-180" : ""
-                      }`}
-                      aria-hidden
-                    >
-                      ▾
-                    </span>
-                  </button>
-                </div>
-                <ul
-                  className={`overflow-hidden transition-all duration-300 ${
-                    mobileServicesOpen ? "max-h-[640px] pb-3" : "max-h-0"
-                  }`}
+        <div className="px-5 py-6">
+          <div className="flex flex-col">
+            {/* Services with collapsible sub-list */}
+            <div className="border-b border-ink/10">
+              <div className="flex items-center justify-between">
+                <Link
+                  href="/services"
+                  className="display text-[26px] tracking-tightest text-ink py-3"
                 >
-                  {services.map((s) => (
-                    <li key={s.slug}>
-                      <Link
-                        href={`/services/${s.slug}`}
-                        className="flex items-baseline gap-3 py-2 text-ink/80"
-                      >
-                        <span className="eyebrow text-ink/40 shrink-0">
-                          {s.no}
-                        </span>
-                        <span className="text-[15px] tracking-wide">
-                          {s.name}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                  Services
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setMobileServicesOpen((v) => !v)}
+                  aria-label={
+                    mobileServicesOpen ? "Collapse services" : "Expand services"
+                  }
+                  aria-expanded={mobileServicesOpen}
+                  className="inline-flex items-center justify-center w-10 h-10 text-ink/70"
+                >
+                  <span
+                    className={`inline-block transition-transform duration-300 text-[12px] ${
+                      mobileServicesOpen ? "rotate-180" : ""
+                    }`}
+                    aria-hidden
+                  >
+                    ▾
+                  </span>
+                </button>
               </div>
-
-              <Link
-                href="/consultation"
-                className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
+              <ul
+                className={`overflow-hidden transition-all duration-300 ${
+                  mobileServicesOpen ? "max-h-[640px] pb-3" : "max-h-0"
+                }`}
               >
-                Consultation
-              </Link>
-              <Link
-                href="/results"
-                className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
-              >
-                Results
-              </Link>
-              <Link
-                href="/contact"
-                className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
-              >
-                Contact
-              </Link>
+                {services.map((s) => (
+                  <li key={s.slug}>
+                    <Link
+                      href={`/services/${s.slug}`}
+                      className="flex items-baseline gap-3 py-2 text-ink/80"
+                    >
+                      <span className="eyebrow text-ink/40 shrink-0">
+                        {s.no}
+                      </span>
+                      <span className="text-[15px] tracking-wide">
+                        {s.name}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <Link
-              href="/book"
-              className="mt-6 group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink text-bone px-5 py-3.5 text-[12px] tracking-wider2 uppercase hover:bg-moss transition-colors"
+              href="/consultation"
+              className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
             >
-              Book
-              <span className="arrow-slide">→</span>
+              Consultation
+            </Link>
+            <Link
+              href="/results"
+              className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
+            >
+              Results
+            </Link>
+            <Link
+              href="/contact"
+              className="display text-[26px] tracking-tightest text-ink py-3 border-b border-ink/10"
+            >
+              Contact
             </Link>
           </div>
+
+          <Link
+            href="/book"
+            className="mt-6 group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink text-bone px-5 py-3.5 text-[12px] tracking-wider2 uppercase hover:bg-moss transition-colors"
+          >
+            Book
+            <span className="arrow-slide">→</span>
+          </Link>
         </div>
       </div>
     </>

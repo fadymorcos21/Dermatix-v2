@@ -20,6 +20,7 @@ body {
   color: var(--ink);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: "ss01", "cv11";
+  overflow-x: hidden;
 }
 
 ::selection {
